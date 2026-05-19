@@ -6,33 +6,41 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>보험과 세법 상담 가이드 2026</title>
+  <title>보험과 세법 상담 가이드 2026 | 프리미엄</title>
   
-  <!-- Pretendard 폰트 -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'sans-serif'],
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'Apple SD Gothic Neo', 'Noto Sans KR', 'sans-serif'],
           },
           colors: {
-            primary: {
-              50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 
-              500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a',
+            brand: {
+              50: '#f0f4f8', 100: '#d9e2ec', 200: '#bcccdc', 300: '#9fb3c8', 400: '#829ab1',
+              500: '#627d98', 600: '#486581', 700: '#334e68', 800: '#243b53', 900: '#102a43', // Sophisticated Navy/Slate
+            },
+            kb: {
+              yellow: '#FFD700',
+              gray: '#5C5C5C'
             }
           },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+            'float': '0 10px 30px -5px rgba(16, 42, 67, 0.15)',
+          },
           animation: {
-            'fade-in': 'fadeIn 0.3s ease-out forwards',
-            'slide-up': 'slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'fade-in': 'fadeIn 0.4s ease-out forwards',
+            'slide-up': 'slideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+            'bottom-sheet-up': 'sheetUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
           },
           keyframes: {
             fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-            slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            slideUp: { '0%': { opacity: '0', transform: 'translateY(15px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            sheetUp: { '0%': { transform: 'translateY(100%)' }, '100%': { transform: 'translateY(0)' } },
           }
         }
       }
@@ -40,147 +48,157 @@
   </script>
 
   <style>
-    body { background-color: #f8fafc; -webkit-tap-highlight-color: transparent; }
+    body { 
+      background-color: #f4f7f9; 
+      -webkit-tap-highlight-color: transparent; 
+      color: #334e68;
+    }
+    
+    /* 모바일 최적화 스크롤바 숨김 */
     .hide-scrollbar::-webkit-scrollbar { display: none; }
     .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     
-    .prose h2 { font-size: 1.125rem; font-weight: 700; color: #1e293b; margin: 1.5rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
-    .prose h3 { font-size: 1rem; font-weight: 600; color: #334155; margin: 1.25rem 0 0.5rem; }
-    .prose p { font-size: 0.9375rem; line-height: 1.6; color: #475569; margin-bottom: 1rem; }
-    .prose ul, .prose ol { padding-left: 1.25rem; margin-bottom: 1rem; color: #475569; }
-    .prose li { font-size: 0.9375rem; margin-bottom: 0.25rem; }
-    .prose strong { color: #0f172a; font-weight: 600; }
-    .prose blockquote { border-left: 4px solid #3b82f6; background-color: #eff6ff; padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin: 1rem 0; color: #1e40af; font-size: 0.9375rem; }
+    /* 본문 렌더링 스타일 (프리미엄 타이포그래피) */
+    .prose h2 { font-size: 1.15rem; font-weight: 800; color: #102a43; margin: 1.75rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #f0f4f8; }
+    .prose h3 { font-size: 1.05rem; font-weight: 700; color: #243b53; margin: 1.5rem 0 0.75rem; }
+    .prose p { font-size: 0.95rem; line-height: 1.65; color: #486581; margin-bottom: 1.25rem; }
+    .prose ul, .prose ol { padding-left: 1.25rem; margin-bottom: 1.25rem; color: #486581; }
+    .prose li { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem; }
+    .prose strong { color: #102a43; font-weight: 700; }
+    .prose blockquote { border-left: 4px solid #627d98; background-color: #f0f4f8; padding: 1.25rem; border-radius: 0 0.75rem 0.75rem 0; margin: 1.5rem 0; color: #334e68; font-size: 0.95rem; }
     
-    .prose .table-wrap { width: 100%; overflow-x: auto; margin: 1.5rem 0; border-radius: 0.75rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
-    .prose table { width: 100%; border-collapse: collapse; text-align: left; white-space: nowrap; }
+    /* 모바일 최적화 테이블 */
+    .prose .table-wrap { width: 100%; overflow-x: auto; margin: 1.5rem 0; border-radius: 1rem; border: 1px solid #d9e2ec; background: #fff; }
+    .prose table { width: 100%; border-collapse: separate; border-spacing: 0; text-align: left; white-space: nowrap; }
     @media (min-width: 640px) { .prose table { white-space: normal; } }
-    .prose th { background-color: #f1f5f9; color: #475569; font-weight: 600; font-size: 0.875rem; padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; }
-    .prose td { padding: 0.75rem 1rem; font-size: 0.875rem; color: #334155; border-bottom: 1px solid #e2e8f0; background-color: #ffffff; }
+    .prose th { background-color: #f8fafc; color: #334e68; font-weight: 700; font-size: 0.875rem; padding: 1rem; border-bottom: 1px solid #d9e2ec; }
+    .prose td { padding: 1rem; font-size: 0.875rem; color: #486581; border-bottom: 1px solid #f0f4f8; }
     .prose tr:last-child td { border-bottom: none; }
-    .prose pre { background-color: #1e293b; color: #f8fafc; padding: 1rem; border-radius: 0.5rem; font-size: 0.875rem; overflow-x: auto; margin: 1rem 0; line-height: 1.5; }
-    .prose code { background-color: #f1f5f9; color: #ef4444; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.8125rem; }
-
-    .filter-btn { transition: all 0.2s ease; }
-    .filter-btn.active { background-color: #1e293b; color: #ffffff; font-weight: 600; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
     
+    .prose pre { background-color: #102a43; color: #f0f4f8; padding: 1.25rem; border-radius: 1rem; font-size: 0.85rem; overflow-x: auto; margin: 1.5rem 0; line-height: 1.6; }
+    .prose code { background-color: #f0f4f8; color: #e11d48; padding: 0.2rem 0.4rem; border-radius: 0.375rem; font-size: 0.85rem; font-family: monospace; }
+
+    /* iOS Safe Area */
     .safe-pt { padding-top: max(1rem, env(safe-area-inset-top)); }
     .safe-pb { padding-bottom: max(6rem, calc(2rem + env(safe-area-inset-bottom))); }
+    .safe-mb { margin-bottom: env(safe-area-inset-bottom); }
+
+    /* 부드러운 스크롤 */
+    html { scroll-behavior: smooth; }
+    
+    /* Input iOS Auto Zoom 방지 (text-base) */
+    input[type="text"], input[type="number"], select { font-size: 16px !important; }
   </style>
 </head>
-<body class="text-slate-800 antialiased selection:bg-primary-200 selection:text-primary-900">
+<body class="antialiased selection:bg-brand-200 selection:text-brand-900">
 
-  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 safe-pt">
-    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-      <h1 class="text-lg font-bold text-slate-900 flex items-center gap-2 truncate">
-        <span class="text-xl">📋</span> 보험과 세법 가이드
+  <!-- 프리미엄 글래스모피즘 헤더 -->
+  <header class="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-brand-100 safe-pt transition-all">
+    <div class="max-w-4xl mx-auto px-5 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-extrabold text-brand-900 tracking-tight flex items-center gap-2">
+        KB <span class="text-brand-500 font-medium text-lg">세법가이드</span>
       </h1>
       <div class="flex items-center gap-2">
-        <span class="hidden sm:inline-block text-xs font-semibold text-primary-700 bg-primary-50 px-2 py-1 rounded-md border border-primary-100">
-          KB 안석훈 매니저
-        </span>
-        <span class="inline-flex items-center rounded-full bg-slate-100 border border-slate-200 px-2.5 py-1 text-xs font-semibold text-slate-600 whitespace-nowrap">
-          2026 · 참고용
+        <span class="inline-flex items-center rounded-full bg-brand-50 px-3 py-1.5 text-xs font-bold text-brand-700 tracking-wide">
+          2026 버젼
         </span>
       </div>
     </div>
     
-    <!-- 검색창 -->
-    <div class="max-w-4xl mx-auto px-4 pb-4">
+    <!-- 모던 검색창 -->
+    <div class="max-w-4xl mx-auto px-5 pb-4">
       <div class="relative group">
         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <span class="text-slate-400 group-focus-within:text-primary-500 transition-colors">🔍</span>
+          <svg class="w-5 h-5 text-brand-400 group-focus-within:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </div>
         <input type="text" id="searchInput" 
-          class="block w-full rounded-2xl border-0 py-3.5 pl-11 pr-12 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-200 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary-500 sm:text-sm sm:leading-6 bg-white transition-all" 
-          placeholder="검색어 입력 (예: 비과세, 증여세, 계산기...)" autocomplete="off">
-        <button id="clearBtn" onclick="clearSearch()" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 hidden">
-          ✕
+          class="block w-full rounded-2xl border-0 py-4 pl-12 pr-12 text-brand-900 bg-brand-50 shadow-inner ring-1 ring-inset ring-transparent placeholder:text-brand-400 focus:ring-2 focus:ring-inset focus:ring-brand-500 focus:bg-white transition-all outline-none" 
+          placeholder="검색어 입력 (예: 증여세, 비과세, 연금...)" autocomplete="off">
+        <button id="clearBtn" onclick="clearSearch()" class="absolute inset-y-0 right-0 pr-4 flex items-center text-brand-400 hover:text-brand-700 hidden transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
     </div>
 
-    <!-- 필터 탭 -->
-    <div class="max-w-4xl mx-auto px-2 pb-3">
-      <div class="flex gap-2 overflow-x-auto hide-scrollbar px-2 py-1" id="filterContainer">
-        <button class="filter-btn active shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('all', this)">전체</button>
-        <button class="filter-btn shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('calculator', this)">🧮 스마트 계산기</button>
-        <button class="filter-btn shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('article', this)">📄 본문</button>
-        <button class="filter-btn shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('qa', this)">❓ Q&A</button>
-        <button class="filter-btn shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('example', this)">📊 사례</button>
-        <div class="w-px h-6 bg-slate-300 my-auto mx-1 shrink-0"></div>
-        <button class="filter-btn shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('조세일반', this)">조세일반</button>
-        <button class="filter-btn shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('보험', this)">보험상품</button>
-        <button class="filter-btn shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('금융소득', this)">금융소득</button>
-        <button class="filter-btn shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('연금', this)">연금</button>
-        <button class="filter-btn shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('증여세', this)">증여세</button>
-        <button class="filter-btn shrink-0 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50" onclick="setFilter('상속세', this)">상속세</button>
+    <!-- 세련된 칩(Pill) 스타일 필터 -->
+    <div class="max-w-4xl mx-auto px-3 pb-3">
+      <div class="flex gap-2.5 overflow-x-auto snap-x hide-scrollbar px-2 py-1" id="filterContainer">
+        <button class="filter-btn active shrink-0 snap-start rounded-full bg-brand-900 px-5 py-2.5 text-sm font-bold text-white shadow-md transition-all" onclick="setFilter('all', this)">전체보기</button>
+        <button class="filter-btn shrink-0 snap-start rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-600 border border-brand-200 hover:bg-brand-50 transition-all" onclick="setFilter('calculator', this)">🧮 스마트 계산기</button>
+        <button class="filter-btn shrink-0 snap-start rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-600 border border-brand-200 hover:bg-brand-50 transition-all" onclick="setFilter('article', this)">📄 핵심 본문</button>
+        <button class="filter-btn shrink-0 snap-start rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-600 border border-brand-200 hover:bg-brand-50 transition-all" onclick="setFilter('qa', this)">❓ Q&A</button>
+        <button class="filter-btn shrink-0 snap-start rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-600 border border-brand-200 hover:bg-brand-50 transition-all" onclick="setFilter('example', this)">📊 실전 사례</button>
       </div>
     </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-4 pt-4 pb-32">
+  <main class="max-w-4xl mx-auto px-5 pt-6 safe-pb">
     
-    <div class="mb-6 rounded-2xl bg-amber-50 p-4 border border-amber-200 flex gap-3 items-start shadow-sm animate-fade-in">
-      <span class="text-amber-500 text-lg leading-none mt-0.5">⚠️</span>
-      <div>
-        <h3 class="text-sm font-bold text-amber-800">참고용 자료 안내</h3>
-        <p class="text-sm text-amber-700 mt-1">본 가이드는 요약된 참고용 자료 및 간편 계산기입니다. 실제 세무 판단은 반드시 세무 전문가와 상담하시기 바랍니다.</p>
+    <!-- 카테고리 네비게이션 (모바일 수평 스크롤) -->
+    <div id="catSection" class="mb-10 animate-slide-up">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-sm font-extrabold text-brand-900">주제별 탐색</h2>
       </div>
+      <div class="flex overflow-x-auto snap-x hide-scrollbar gap-4 pb-4 -mx-5 px-5" id="catGrid">
+        <!-- JS로 동적 생성됨 -->
+      </div>
+      <div id="subCatArea" class="mt-2 flex flex-wrap gap-2 hidden"></div>
     </div>
 
-    <!-- 카테고리 섹션 -->
-    <div id="catSection" class="mb-8 animate-slide-up">
-      <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 px-1">카테고리 탐색</h2>
-      <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-8 gap-2.5" id="catGrid"></div>
-      <div id="subCatArea" class="mt-3 flex flex-wrap gap-2 hidden px-1"></div>
+    <!-- 리스트 헤더 -->
+    <div class="flex justify-between items-end mb-4 border-b border-brand-200 pb-2">
+      <h2 class="text-xl font-extrabold text-brand-900" id="resultTitle">전체 문서</h2>
+      <span class="text-sm font-semibold text-brand-500" id="resultCount"></span>
     </div>
 
-    <!-- 결과 헤더 -->
-    <div class="flex justify-between items-end mb-3 px-1">
-      <h2 class="text-lg font-bold text-slate-800" id="resultTitle">전체 문서</h2>
-      <span class="text-sm font-medium text-slate-500" id="resultCount"></span>
-    </div>
-
-    <!-- 리스트 -->
-    <div class="space-y-3" id="contentList"></div>
+    <!-- 카드 리스트 -->
+    <div class="space-y-4" id="contentList"></div>
   </main>
 
-  <div id="modalOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300 flex items-end sm:items-center justify-center p-0 sm:p-4" onclick="closeModal(event)">
-    <div id="modal" class="bg-white w-full max-w-2xl sm:rounded-3xl rounded-t-3xl sm:max-h-[85vh] max-h-[90vh] flex flex-col shadow-2xl transform transition-transform duration-300 translate-y-full sm:translate-y-0 sm:scale-95">
-      <div class="sm:hidden flex justify-center pt-3 pb-1">
-        <div class="w-12 h-1.5 bg-slate-200 rounded-full"></div>
+  <!-- 모바일 최적화 바텀 시트 (Bottom Sheet) 모달 -->
+  <div id="modalOverlay" class="fixed inset-0 bg-brand-900/40 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300 flex items-end justify-center sm:p-4" onclick="closeModal(event)">
+    <div id="modal" class="bg-white w-full max-w-2xl rounded-t-[2rem] sm:rounded-3xl max-h-[92vh] sm:max-h-[85vh] flex flex-col shadow-2xl transform translate-y-full transition-transform duration-400 ease-out safe-mb">
+      
+      <!-- 모바일 드래그 핸들 지시자 -->
+      <div class="flex justify-center pt-4 pb-2 sm:hidden shrink-0 cursor-pointer" onclick="closeModalDirect()">
+        <div class="w-12 h-1.5 bg-brand-200 rounded-full"></div>
       </div>
-      <div class="flex justify-between items-start p-5 sm:p-6 border-b border-slate-100 shrink-0">
-        <h2 class="text-xl font-bold text-slate-900 leading-snug pr-4" id="modalTitle"></h2>
-        <button onclick="closeModalDirect()" class="shrink-0 p-2 -mr-2 -mt-2 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-full transition-colors">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+
+      <!-- 모달 헤더 -->
+      <div class="flex justify-between items-start px-6 pt-2 pb-4 sm:p-6 border-b border-brand-100 shrink-0">
+        <h2 class="text-xl font-extrabold text-brand-900 leading-snug pr-4" id="modalTitle"></h2>
+        <button onclick="closeModalDirect()" class="shrink-0 p-2 -mr-2 bg-brand-50 hover:bg-brand-100 text-brand-500 rounded-full transition-colors focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
-      <div class="p-5 sm:p-6 overflow-y-auto hide-scrollbar" id="modalBody"></div>
+      
+      <!-- 모달 바디 (스크롤) -->
+      <div class="p-6 overflow-y-auto hide-scrollbar flex-1" id="modalBody"></div>
     </div>
   </div>
 
-  <!-- 플로팅 액션 버튼 -->
-  <div class="fixed bottom-6 right-4 sm:right-8 z-40 flex flex-col gap-3 items-end pb-[env(safe-area-inset-bottom)]">
-    <!-- 담당자 명함 -->
-    <div class="bg-white/90 backdrop-blur px-4 py-2.5 rounded-xl shadow-lg border border-slate-200 mb-1 text-right animate-fade-in">
-      <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">상담 및 문의</div>
-      <div class="font-bold text-slate-800 text-sm">KB웰스매니저 <span class="text-primary-700">안석훈</span></div>
-      <div class="text-slate-600 font-semibold text-xs mt-0.5">010-2213-3907</div>
-    </div>
+  <!-- 프리미엄 플로팅 연락처 & 위로가기 -->
+  <div class="fixed bottom-6 right-5 z-40 flex flex-col gap-3 items-end pb-[env(safe-area-inset-bottom)]">
     
-    <div class="flex gap-2">
-      <a href="sms:010-2213-3907" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-4 py-3 rounded-full font-bold text-sm shadow-lg hover:-translate-y-1 transition-transform">
-        💬 문자
-      </a>
-      <a href="tel:010-2213-3907" class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-3 rounded-full font-bold text-sm shadow-lg hover:-translate-y-1 transition-transform">
-        📞 통화
-      </a>
+    <!-- 연락처 카드 (항상 노출, 세련된 디자인) -->
+    <div class="bg-white/90 backdrop-blur-xl p-1.5 rounded-2xl shadow-float border border-white flex items-center gap-3 animate-slide-up group">
+      <div class="flex flex-col text-right pl-3">
+        <span class="text-[10px] font-bold text-brand-400 uppercase tracking-widest mb-0.5">KB Wealth Manager</span>
+        <span class="text-sm font-extrabold text-brand-900">안석훈 <span class="font-medium text-brand-500 text-xs">담당자</span></span>
+      </div>
+      <div class="flex gap-1.5">
+        <a href="sms:010-2213-3907" class="w-10 h-10 flex items-center justify-center bg-brand-50 hover:bg-brand-100 text-brand-700 rounded-xl transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+        </a>
+        <a href="tel:010-2213-3907" class="w-10 h-10 flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-md transition-transform active:scale-95">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+        </a>
+      </div>
     </div>
 
-    <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="w-12 h-12 bg-white text-slate-600 border border-slate-200 rounded-full shadow-lg flex items-center justify-center hover:bg-slate-50 transition-all opacity-0 translate-y-4 pointer-events-none mt-2">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+    <!-- 스크롤 탑 버튼 -->
+    <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="w-12 h-12 bg-white text-brand-600 border border-brand-100 rounded-full shadow-lg flex items-center justify-center hover:bg-brand-50 transition-all opacity-0 translate-y-4 pointer-events-none mt-1">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
     </button>
   </div>
 
@@ -202,60 +220,54 @@ const CATEGORIES = [
   { id: 3, parent_id: null, name: '보험과 세금', emoji: '🛡️', description: '저축성보험 비과세, 보장성보험 세액공제, 보험금 과세' },
   { id: 4, parent_id: null, name: '금융소득', emoji: '💹', description: '이자·배당소득, 2,000만원 초과 종합과세' },
   { id: 5, parent_id: null, name: '연금소득', emoji: '🔐', description: '사적연금 세율, 연금수령한도, 연금소득공제' },
-  { id: 6, parent_id: null, name: '증여세 상식', emoji: '🎁', description: '증여세 계산, 재산공제, 보험금 증여의제' },
+  { id: 6, parent_id: null, name: '증여세 상식', emoji: '🎁', description: '증여세 계산, 재산공제, 변칙증여' },
   { id: 7, parent_id: null, name: '상속세 상식', emoji: '📜', description: '상속세 계산, 간주상속재산, 상속공제' },
-  { id: 8, parent_id: null, name: '기타 상식', emoji: '📌', description: '수정신고, 경정청구, 가산세, 불복절차' },
+  { id: 8, parent_id: null, name: '기타 상식', emoji: '📌', description: '수정신고, 불복절차, 세무조사' },
   { id: 9, parent_id: null, name: '스마트 계산기', emoji: '🧮', description: '상속, 증여, 연금, 소득세 시뮬레이션' },
   
   // 서브카테고리
-  { id: 11, parent_id: 1, name: '소득세', emoji: '💴' }, { id: 12, parent_id: 1, name: '법인세', emoji: '🏢' }, { id: 13, parent_id: 1, name: '부가가치세·기타', emoji: '🧾' },
-  { id: 21, parent_id: 2, name: '사업자 유형', emoji: '📝' }, { id: 22, parent_id: 2, name: '사업소득 과세', emoji: '📊' },
+  { id: 11, parent_id: 1, name: '소득세', emoji: '💴' }, { id: 12, parent_id: 1, name: '법인세', emoji: '🏢' }, { id: 13, parent_id: 1, name: '부가가치세', emoji: '🧾' },
   { id: 31, parent_id: 3, name: '저축성보험', emoji: '💰' }, { id: 32, parent_id: 3, name: '보장성보험', emoji: '🛡️' }, { id: 33, parent_id: 3, name: '보험금 과세', emoji: '💵' },
-  { id: 41, parent_id: 4, name: '이자·배당소득', emoji: '📈' }, { id: 42, parent_id: 4, name: '집합투자·펀드', emoji: '🏦' },
-  { id: 51, parent_id: 5, name: '공적연금', emoji: '🏛️' }, { id: 52, parent_id: 5, name: '사적연금·IRP', emoji: '💎' },
-  { id: 61, parent_id: 6, name: '증여세 일반', emoji: '🎀' }, { id: 62, parent_id: 6, name: '변칙증여', emoji: '⚠️' },
-  { id: 71, parent_id: 7, name: '상속세 일반', emoji: '📋' }, { id: 72, parent_id: 7, name: '상속 특례', emoji: '🌟' },
-  { id: 81, parent_id: 8, name: '불복·경정청구', emoji: '⚖️' }, { id: 82, parent_id: 8, name: '세무조사·신고', emoji: '🔎' },
-  { id: 91, parent_id: 9, name: '증여/상속 계산', emoji: '💸' }, { id: 92, parent_id: 9, name: '연금/소득 계산', emoji: '📈' }
+  { id: 51, parent_id: 5, name: '공적연금', emoji: '🏛️' }, { id: 52, parent_id: 5, name: '사적연금', emoji: '💎' },
+  { id: 61, parent_id: 6, name: '증여세 일반', emoji: '🎀' }, { id: 71, parent_id: 7, name: '상속세 일반', emoji: '📋' },
+  { id: 91, parent_id: 9, name: '상속/증여 계산', emoji: '💸' }, { id: 92, parent_id: 9, name: '연금/소득 계산', emoji: '📈' }
 ];
-const CAT_MAP = { 11:1,12:1,13:1,21:2,22:2,31:3,32:3,33:3,41:4,42:4,51:5,52:5,61:6,62:6,71:7,72:7,81:8,82:8, 91:9, 92:9 };
+const CAT_MAP = { 11:1,12:1,13:1,31:3,32:3,33:3,51:5,52:5,61:6,71:7,91:9,92:9 };
 
 const ARTICLES = [
-  { id:1, cat_id:1, type:'article', title:'세금의 일생 개요', summary:'세금은 태어나서 사망할 때까지 경제활동의 전 과정에서 발생한다. 소득·재산·소비·이전의 각 단계별로 다양한 세금이 부과된다.', keywords:['세금의 일생','소득세','재산세','소비세','취득세','상속세','증여세'], page:4, law:'', content:`<h2>세금의 일생</h2><h3>소득 단계</h3><ul><li>근로소득 → 근로소득세</li><li>사업소득 → 종합소득세</li><li>금융소득 → 이자소득세·배당소득세</li><li>연금소득 → 연금소득세</li></ul><h3>재산 취득·보유·처분 단계</h3><ul><li>취득 → 취득세, 등록면허세</li><li>보유 → 재산세, 종합부동산세</li><li>처분(양도) → 양도소득세</li></ul><h3>이전 단계</h3><ul><li>사망에 의한 이전 → 상속세</li><li>생전 무상 이전 → 증여세</li></ul><h3>소비 단계</h3><ul><li>재화·용역 구매 → 부가가치세</li><li>특별소비재 → 개별소비세, 주세</li></ul>` },
-  { id:2, cat_id:1, type:'article', title:'조세의 분류', summary:'세금은 부과 주체(국세·지방세), 전가 여부(직접세·간접세), 목적(보통세·목적세)에 따라 분류된다.', keywords:['국세','지방세','직접세','간접세','보통세','목적세'], page:5, law:'', content:`<h2>조세의 분류</h2><h3>부과 주체별</h3><table><tr><th>구분</th><th>내용</th><th>예시</th></tr><tr><td><strong>국세</strong></td><td>국가가 부과·징수</td><td>소득세, 법인세, 상속세, 증여세, 부가가치세</td></tr><tr><td><strong>지방세</strong></td><td>지방자치단체 부과</td><td>재산세, 취득세, 주민세</td></tr></table><h3>전가 가능성별</h3><table><tr><th>구분</th><th>내용</th><th>예시</th></tr><tr><td><strong>직접세</strong></td><td>납세의무자 = 담세자</td><td>소득세, 법인세, 상속세, 증여세</td></tr><tr><td><strong>간접세</strong></td><td>납세의무자 ≠ 담세자</td><td>부가가치세, 개별소비세</td></tr></table>` },
-  { id:3, cat_id:1, type:'article', title:'소득세 특징과 세율체계', summary:'소득세는 개인 단위로 과세되며, 6%~45%의 8단계 초과누진세율이 적용된다.', keywords:['소득세율','초과누진세율','과세표준','6%','45%'], page:13, law:'소득세법 제55조', content:`<h2>소득세 세율표 (2026년)</h2><table><tr><th>과세표준</th><th>세율</th><th>누진공제액</th></tr><tr><td>1,400만원 이하</td><td>6%</td><td>—</td></tr><tr><td>1,400만원 초과 ~ 5,000만원 이하</td><td>15%</td><td>126만원</td></tr><tr><td>5,000만원 초과 ~ 8,800만원 이하</td><td>24%</td><td>576만원</td></tr><tr><td>8,800만원 초과 ~ 1억5,000만원 이하</td><td>35%</td><td>1,544만원</td></tr><tr><td>1억5,000만원 초과 ~ 3억원 이하</td><td>38%</td><td>1,994만원</td></tr><tr><td>3억원 초과 ~ 5억원 이하</td><td>40%</td><td>2,594만원</td></tr><tr><td>5억원 초과 ~ 10억원 이하</td><td>42%</td><td>3,594만원</td></tr><tr><td>10억원 초과</td><td>45%</td><td>6,594만원</td></tr></table><blockquote>산출세액 = 과세표준 × 세율 − 누진공제액<br>예) 6,000만원 × 24% − 576만원 = <strong>864만원</strong></blockquote>` },
-  { id:4, cat_id:1, type:'article', title:'상속·증여세 세율표', summary:'상속·증여세는 10%~50%의 5단계 초과누진세율이 적용된다.', keywords:['상속세율','증여세율','10%','50%'], page:11, law:'상속세 및 증여세법 제26조, 제56조', content:`<h2>상속·증여세 세율표</h2><table><tr><th>과세표준</th><th>세율</th><th>누진공제액</th></tr><tr><td>1억원 이하</td><td>10%</td><td>—</td></tr><tr><td>1억원 초과 ~ 5억원 이하</td><td>20%</td><td>1,000만원</td></tr><tr><td>5억원 초과 ~ 10억원 이하</td><td>30%</td><td>6,000만원</td></tr><tr><td>10억원 초과 ~ 30억원 이하</td><td>40%</td><td>1억6,000만원</td></tr><tr><td>30억원 초과</td><td>50%</td><td>4억6,000만원</td></tr></table><blockquote>예) 과세표준 10억원 → 10억원 × 40% − 1억6,000만원 = <strong>2억4,000만원</strong></blockquote>` },
-  { id:5, cat_id:31, type:'article', title:'저축성보험 보험차익 비과세 요건', summary:'월적립식은 5년 이상 납입·10년 이상 유지·월 150만원 이하, 일시납은 1억원 이하·10년 이상 유지 시 이자소득세 비과세.', keywords:['보험차익','비과세','10년','5년','150만원','1억원','저축성보험'], page:20, law:'소득세법 제16조, 시행령 제25조', content:`<h2>저축성보험 보험차익 비과세</h2><h3>월적립식 저축성보험</h3><table><tr><th>요건</th><th>내용</th></tr><tr><td>납입기간</td><td><strong>5년 이상</strong> 납입</td></tr><tr><td>유지기간</td><td><strong>10년 이상</strong> 유지</td></tr><tr><td>월 보험료</td><td><strong>150만원 이하</strong></td></tr></table><h3>일시납 저축성보험</h3><table><tr><th>요건</th><th>내용</th></tr><tr><td>납입한도</td><td>1인당 <strong>1억원 이하</strong></td></tr><tr><td>유지기간</td><td><strong>10년 이상</strong> 유지</td></tr></table><blockquote>⚠️ 1억원 초과 일시납은 10년 유지해도 비과세 불가</blockquote><h3>비과세 배제 사유</h3><ul><li>최초 납입일로부터 10년 미만 중도해지</li><li>월 보험료 150만원 초과</li><li>보험계약 대출 이용 시</li></ul>` },
-  { id:12, cat_id:52, type:'article', title:'연금계좌 세액공제 (연금저축·IRP)', summary:'연금저축 600만원·IRP 포함 합산 900만원 한도로 13.2%~16.5% 세액공제. 총급여 5,500만원 이하는 16.5% 적용.', keywords:['연금저축','IRP','세액공제','900만원','16.5%','13.2%'], page:36, law:'소득세법 제59조의3', content:`<h2>연금계좌 세액공제</h2><table><tr><th>구분</th><th>연금저축</th><th>IRP 포함 합산</th></tr><tr><td>납입 한도</td><td>연 600만원</td><td>연 <strong>900만원</strong></td></tr></table><h3>세액공제율</h3><table><tr><th>총급여(근로자)</th><th>공제율</th><th>최대 공제액</th></tr><tr><td>5,500만원 이하</td><td><strong>16.5%</strong></td><td>148.5만원</td></tr><tr><td>5,500만원 초과</td><td><strong>13.2%</strong></td><td>118.8만원</td></tr></table><blockquote>운용 기간 중 이자·배당 등 운용소득은 <strong>과세 없음</strong> (인출 시 과세)</blockquote>` },
-  { id:13, cat_id:52, type:'article', title:'사적연금 수령 시 과세세율', summary:'사적연금 연금 수령 시 나이에 따라 3%~5% 저율 분리과세. 연금수령한도 초과 인출 시 기타소득(16.5%) 과세.', keywords:['사적연금','연금소득세율','5%','4%','3%','연금수령한도','70세','80세'], page:37, law:'소득세법 제129조 제1항 제8호', content:`<h2>사적연금 수령 시 과세</h2><table><tr><th>수령 연령</th><th>세율</th></tr><tr><td>70세 미만</td><td><strong>5%</strong></td></tr><tr><td>70세 이상 ~ 80세 미만</td><td><strong>4%</strong></td></tr><tr><td>80세 이상</td><td><strong>3%</strong></td></tr></table><h3>연금수령한도 계산식</h3><blockquote><strong>연금수령한도 = 연금계좌 평가액 ÷ (11 − 연금수령 연차) × 120%</strong></blockquote><p>예) 평가액 1억원, 1년차: 1억 ÷ 10 × 120% = <strong>1,200만원</strong></p><table><tr><th>구분</th><th>수령 방법</th><th>세율</th></tr><tr><td>한도 이내 연금 수령</td><td>연금 형태</td><td><strong>3~5%</strong></td></tr><tr><td>한도 초과 인출</td><td>일시금·해지</td><td><strong>16.5%</strong></td></tr></table>` },
-  { id:14, cat_id:61, type:'article', title:'증여세 계산 구조 및 공제', summary:'증여세는 증여재산가액에서 공제 차감 후 10%~50% 세율 적용. 10년 합산 배주자 6억, 성년 자녀 5천만 공제.', keywords:['증여세','증여재산공제','10%','50%','3%','신고세액공제','3개월'], page:40, law:'상속세 및 증여세법 제53조, 제56조', content:`<h2>증여세 계산 구조</h2><pre>증여재산가액<br>  − 채무액 (부담부증여)<br>= 증여세 과세가액<br>  + 10년 내 동일인 증여 합산<br>  − 증여재산공제<br>= 과세표준<br>  × 세율 (10%~50%)<br>= 산출세액<br>  − 신고세액공제 (3%)<br>= 납부세액</pre><h3>증여재산공제 (10년 합산)</h3><table><tr><th>증여자</th><th>공제 한도</th></tr><tr><td>배우자</td><td><strong>6억원</strong></td></tr><tr><td>직계존속 (성년)</td><td><strong>5,000만원</strong></td></tr><tr><td>직계존속 (미성년)</td><td><strong>2,000만원</strong></td></tr><tr><td>직계비속</td><td><strong>5,000만원</strong></td></tr><tr><td>기타 친족</td><td><strong>1,000만원</strong></td></tr></table><blockquote>혼인·출산 공제: 혼인 전후 2년 또는 출산 후 2년 이내 <strong>1억원</strong> 추가 공제</blockquote><p><strong>신고기한</strong>: 증여일이 속한 달의 말일로부터 <strong>3개월</strong> 이내</p>` },
-  { id:15, cat_id:71, type:'article', title:'상속세 계산 구조 및 상속인 순위', summary:'상속세는 상속재산에서 공제를 차감하고 10%~50% 세율 적용. 상속인 1순위는 직계비속+배우자.', keywords:['상속세','간주상속재산','상속인 순위','법정상속비율','6개월'], page:46, law:'상속세 및 증여세법 제1조~제27조', content:`<h2>상속세 계산 구조</h2><pre>본래 상속재산<br>  + 간주상속재산 (보험금, 신탁재산, 퇴직금)<br>  + 사전증여재산 (10년/5년 내)<br>= 총 상속재산가액<br>  − 공과금·장례비용·채무<br>= 상속세 과세가액<br>  − 상속공제 (일괄, 배우자 등)<br>= 과세표준<br>  × 세율 (10%~50%)<br>= 산출세액<br>  − 신고세액공제 (3%)<br>= 납부세액</pre><h3>상속인 순위</h3><ol><li>직계비속 (자녀, 손자녀) + 배우자</li><li>직계존속 (부모, 조부모) + 배우자</li><li>형제자매</li><li>4촌 이내 방계혈족</li></ol><h3>법정상속비율</h3><ul><li>배우자 상속분: 다른 상속인의 <strong>1.5배</strong></li><li>예) 배우자 + 자녀 2인: 배우자 3/7, 자녀 각 2/7</li></ul>` }
+  { id:1, cat_id:1, type:'article', title:'소득세 특징과 세율체계', summary:'소득세는 개인 단위로 과세되며, 6%~45%의 8단계 초과누진세율이 적용된다.', keywords:['소득세율','과세표준','6%','45%'], page:13, law:'소득세법 제55조', content:`<h2>소득세 세율표 (2026년)</h2><table><tr><th>과세표준</th><th>세율</th><th>누진공제액</th></tr><tr><td>1,400만원 이하</td><td>6%</td><td>—</td></tr><tr><td>1,400만원 초과 ~ 5,000만원 이하</td><td>15%</td><td>126만원</td></tr><tr><td>5,000만원 초과 ~ 8,800만원 이하</td><td>24%</td><td>576만원</td></tr><tr><td>8,800만원 초과 ~ 1억5,000만원 이하</td><td>35%</td><td>1,544만원</td></tr><tr><td>1억5,000만원 초과 ~ 3억원 이하</td><td>38%</td><td>1,994만원</td></tr><tr><td>3억원 초과 ~ 5억원 이하</td><td>40%</td><td>2,594만원</td></tr><tr><td>5억원 초과 ~ 10억원 이하</td><td>42%</td><td>3,594만원</td></tr><tr><td>10억원 초과</td><td>45%</td><td>6,594만원</td></tr></table><blockquote>산출세액 = 과세표준 × 세율 − 누진공제액<br>예) 6,000만원 × 24% − 576만원 = <strong>864만원</strong></blockquote>` },
+  { id:2, cat_id:1, type:'article', title:'상속·증여세 세율표', summary:'상속·증여세는 10%~50%의 5단계 초과누진세율이 적용된다.', keywords:['상속세율','증여세율','10%','50%'], page:11, law:'상속세 및 증여세법 제26조, 제56조', content:`<h2>상속·증여세 세율표</h2><table><tr><th>과세표준</th><th>세율</th><th>누진공제액</th></tr><tr><td>1억원 이하</td><td>10%</td><td>—</td></tr><tr><td>1억원 초과 ~ 5억원 이하</td><td>20%</td><td>1,000만원</td></tr><tr><td>5억원 초과 ~ 10억원 이하</td><td>30%</td><td>6,000만원</td></tr><tr><td>10억원 초과 ~ 30억원 이하</td><td>40%</td><td>1억6,000만원</td></tr><tr><td>30억원 초과</td><td>50%</td><td>4억6,000만원</td></tr></table><blockquote>예) 과세표준 10억원 → 10억원 × 40% − 1억6,000만원 = <strong>2억4,000만원</strong></blockquote>` },
+  { id:3, cat_id:31, type:'article', title:'저축성보험 보험차익 비과세 요건', summary:'월적립식은 5년 이상 납입·10년 이상 유지·월 150만원 이하, 일시납은 1억원 이하·10년 이상 유지 시 이자소득세 비과세.', keywords:['보험차익','비과세','10년','5년','150만원','1억원','저축성보험'], page:20, law:'소득세법 제16조, 시행령 제25조', content:`<h2>저축성보험 보험차익 비과세</h2><h3>월적립식 저축성보험</h3><table><tr><th>요건</th><th>내용</th></tr><tr><td>납입기간</td><td><strong>5년 이상</strong> 납입</td></tr><tr><td>유지기간</td><td><strong>10년 이상</strong> 유지</td></tr><tr><td>월 보험료</td><td><strong>150만원 이하</strong></td></tr></table><h3>일시납 저축성보험</h3><table><tr><th>요건</th><th>내용</th></tr><tr><td>납입한도</td><td>1인당 <strong>1억원 이하</strong></td></tr><tr><td>유지기간</td><td><strong>10년 이상</strong> 유지</td></tr></table><blockquote>⚠️ 1억원 초과 일시납은 10년 유지해도 비과세 불가</blockquote><h3>비과세 배제 사유</h3><ul><li>최초 납입일로부터 10년 미만 중도해지</li><li>월 보험료 150만원 초과</li><li>보험계약 대출 이용 시</li></ul>` },
+  { id:4, cat_id:33, type:'article', title:'보험금과 증여세 (상증법 제34조)', summary:'계약자·피보험자·수익자가 다른 경우 보험금 수령 시 타인 납부 보험료 비율만큼 증여세 과세.', keywords:['보험금','증여세','계약자','수익자'], page:27, law:'상증법 제34조', content:`<h2>보험금과 증여세</h2><blockquote><strong>증여재산가액 = 보험금 × (타인이 납부한 보험료 / 총 납부 보험료)</strong></blockquote><table><tr><th>계약자</th><th>피보험자</th><th>수익자</th><th>과세</th></tr><tr><td>본인</td><td>본인</td><td>본인</td><td>비과세</td></tr><tr><td>A(부)</td><td>A(부)</td><td>B(자녀)</td><td>✅ 증여세</td></tr><tr><td>A(부)</td><td>B(자녀)</td><td>B(자녀)</td><td>✅ 증여세(A 납부분)</td></tr></table>` },
+  { id:5, cat_id:4, type:'article', title:'금융소득 종합과세 기준', summary:'연간 금융소득 2,000만원 초과 시 다른 소득과 합산하여 종합과세. 이하는 14% 분리과세로 종결.', keywords:['금융소득 종합과세','2000만원','분리과세'], page:33, law:'소득세법 제14조', content:`<h2>금융소득 종합과세</h2><table><tr><th>구분</th><th>과세 방법</th></tr><tr><td><strong>2,000만원 이하</strong></td><td>14% <strong>분리과세</strong> (원천징수로 완료)</td></tr><tr><td><strong>2,000만원 초과</strong></td><td>전액 <strong>종합과세</strong> (다른 소득과 합산)</td></tr></table><h3>비교산출세액 특례</h3><p>두 방법 중 큰 금액으로 납부:</p><ul><li>방법1: 금융소득 포함 종합소득 × 종합소득세율</li><li>방법2: (2,000만원 초과분 + 다른 소득) × 세율 + 2,000만원 × 14%</li></ul>` },
+  { id:6, cat_id:52, type:'article', title:'사적연금 수령 시 과세세율', summary:'사적연금 연금 수령 시 나이에 따라 3%~5% 저율 분리과세. 한도 초과 인출 시 기타소득 과세.', keywords:['사적연금','연금소득세율','5%','연금수령한도'], page:37, law:'소득세법 제129조', content:`<h2>사적연금 수령 시 과세</h2><table><tr><th>수령 연령</th><th>세율</th></tr><tr><td>70세 미만</td><td><strong>5%</strong></td></tr><tr><td>70세 이상 ~ 80세 미만</td><td><strong>4%</strong></td></tr><tr><td>80세 이상</td><td><strong>3%</strong></td></tr></table><h3>연금수령한도 계산식</h3><blockquote><strong>연금수령한도 = 연금계좌 평가액 ÷ (11 − 연금수령 연차) × 120%</strong></blockquote><p>예) 평가액 1억원, 1년차: 1억 ÷ 10 × 1.2 = <strong>1,200만원</strong></p><table><tr><th>수령 방법</th><th>세율</th></tr><tr><td>한도 이내 연금 수령</td><td><strong>3~5%</strong></td></tr><tr><td>한도 초과 인출</td><td><strong>기타소득세 16.5%</strong></td></tr></table>` },
+  { id:7, cat_id:61, type:'article', title:'증여재산 공제 한도', summary:'10년 합산 배우자 6억, 성년 자녀 5천만 공제. 혼인·출산 공제 1억 추가 가능.', keywords:['증여세공제','5000만원','혼인공제'], page:40, law:'상증법 제53조', content:`<h2>증여재산공제 (10년 합산)</h2><table><tr><th>증여자</th><th>공제 한도</th></tr><tr><td>배우자</td><td><strong>6억원</strong></td></tr><tr><td>직계존속 (성년)</td><td><strong>5,000만원</strong></td></tr><tr><td>직계존속 (미성년)</td><td><strong>2,000만원</strong></td></tr><tr><td>직계비속</td><td><strong>5,000만원</strong></td></tr><tr><td>기타 친족</td><td><strong>1,000만원</strong></td></tr></table><blockquote>혼인·출산 공제: 혼인 전후 2년 또는 출산 후 2년 이내 <strong>1억원</strong> 추가 공제</blockquote><p><strong>신고기한</strong>: 증여일이 속한 달의 말일로부터 <strong>3개월</strong> 이내</p>` },
+  { id:8, cat_id:71, type:'article', title:'상속공제 종류와 금액', summary:'일괄공제 5억, 배우자공제 최소 5억~최대 30억 보장.', keywords:['상속공제','일괄공제','배우자공제'], page:49, law:'상증법 제19조', content:`<h2>상속공제 종류와 금액</h2><table><tr><th>공제 종류</th><th>공제 금액</th></tr><tr><td>기초공제</td><td>2억원</td></tr><tr><td><strong>일괄공제</strong></td><td><strong>5억원</strong> (기초+기타 5억 미만 시 선택)</td></tr><tr><td><strong>배우자 상속공제</strong></td><td>최소 <strong>5억원</strong> ~ 최대 <strong>30억원</strong></td></tr><tr><td>금융재산 상속공제</td><td>순금융재산 × 20% (최대 2억원)</td></tr><tr><td>동거주택 상속공제</td><td>주택가액 100% (최대 <strong>6억원</strong>)</td></tr></table>` }
 ];
 
 const QA_ITEMS = [
-  { id:101, cat_id:41, type:'qa', title:'이자소득세는 언제 납부하나요?', summary:'지급 시점에 금융기관이 원천징수. 2,000만원 초과 시 종합소득세 신고.', keywords:['이자소득세','원천징수','분리과세','2000만원'], page:2, law:'소득세법 제14조, 제129조', question:'이자소득세는 언제 납부하나요?', answer:`이자소득세는 이자를 지급하는 금융기관이 지급 시점에 <strong>원천징수</strong>합니다.<br><br>연간 이자+배당 합계가 <strong>2,000만원 이하</strong>라면 원천징수로 납세가 완료됩니다(분리과세).<br><br><strong>2,000만원을 초과</strong>하는 경우에는 다음 해 5월에 종합소득세로 신고·납부해야 합니다.` },
-  { id:102, cat_id:31, type:'qa', title:'저축성보험 비과세 조건', summary:'월적립식 5년납 10년유지 150만원 이하. 일시납 1억 이하 10년유지.', keywords:['저축성보험','비과세','5년','10년','150만원','1억원'], page:20, law:'소득세법 제16조', question:'저축성보험 보험차익이 비과세되려면 어떤 조건이 필요한가요?', answer:`<strong>월적립식</strong>: ① 5년 이상 납입 ② 10년 이상 유지 ③ 월 보험료 150만원 이하<br><br><strong>일시납</strong>: ① 1인당 1억원 이하 납입 ② 10년 이상 유지<br><br>⚠️ 1억원 초과 일시납은 10년 유지해도 비과세 불가` },
-  { id:106, cat_id:52, type:'qa', title:'사적연금 수령 시 세금', summary:'연금 형태 수령 시 3~5% 분리과세. 한도 초과 인출 시 16.5% 과세.', keywords:['사적연금','연금소득세','5%','4%','3%'], page:37, law:'소득세법 제129조', question:'사적연금을 수령할 때 세금은 얼마나 내나요?', answer:`연금 형태로 수령하면 낮은 세율의 <strong>연금소득세</strong>가 부과됩니다.<br><br>• 70세 미만: <strong>5%</strong><br>• 70세 이상 ~ 80세 미만: <strong>4%</strong><br>• 80세 이상: <strong>3%</strong><br><br>⚠️ 연금수령한도를 초과하여 인출하면 <strong>기타소득(16.5%)</strong>으로 과세됩니다.` },
-  { id:107, cat_id:61, type:'qa', title:'부모가 자녀에게 비과세로 줄 수 있는 금액', summary:'성년 자녀 10년간 5천만원. 혼인·출산 시 1억원 추가 공제.', keywords:['증여재산공제','5000만원','혼인공제','1억원'], page:43, law:'상증법 제53조', question:'부모가 자녀에게 세금 없이 줄 수 있는 최대 금액은 얼마인가요?', answer:`<strong>10년 단위</strong> 증여재산공제:<br>• 성년 자녀: <strong>5,000만원</strong><br>• 미성년 자녀: <strong>2,000만원</strong><br><br>혼인 전후 2년 또는 출산 후 2년 이내 증여 시 <strong>1억원 추가</strong> 공제<br><br>→ 혼인하는 성년 자녀: 5,000만원 + 1억원 = <strong>1억5,000만원</strong>` },
-  { id:108, cat_id:71, type:'qa', title:'배우자가 있을 때 상속세 최소 기준', summary:'일괄공제 5억+배우자공제 5억=최소 10억원 이하 상속세 없음.', keywords:['상속공제','일괄공제','배우자공제','10억원'], page:49, law:'상증법 제19조', question:'배우자가 있을 때 상속세는 얼마부터 부과되나요?', answer:`배우자가 있는 경우:<br>• 일괄공제: <strong>5억원</strong><br>• 배우자공제: 최소 <strong>5억원</strong><br>→ 합산 최소 <strong>10억원</strong> 공제<br><br>즉, 총 상속재산이 <strong>10억원 이하</strong>이면 상속세가 없습니다.` }
+  { id:101, cat_id:4, type:'qa', title:'이자소득세는 언제 납부하나요?', summary:'지급 시점에 금융기관이 15.4% 원천징수. 2,000만원 초과 시 종합소득세 신고.', keywords:['이자소득세','원천징수'], question:'이자소득세는 언제 납부하나요?', answer:`이자소득세는 이자를 지급하는 금융기관이 지급 시점에 <strong>원천징수(15.4%)</strong>합니다.<br><br>연간 이자+배당 합계가 <strong>2,000만원 이하</strong>라면 원천징수로 납세가 완료됩니다(분리과세).<br><br><strong>2,000만원을 초과</strong>하는 경우에는 다음 해 5월에 종합소득세로 신고·납부해야 합니다.` },
+  { id:102, cat_id:31, type:'qa', title:'저축성보험 비과세 조건', summary:'월적립식 5년납 10년유지 150만원 이하. 일시납 1억 이하 10년유지.', keywords:['저축성보험','비과세'], question:'저축성보험 보험차익이 비과세되려면 어떤 조건이 필요한가요?', answer:`<strong>월적립식</strong>: ① 5년 이상 납입 ② 10년 이상 유지 ③ 월 보험료 150만원 이하<br><br><strong>일시납</strong>: ① 1인당 1억원 이하 납입 ② 10년 이상 유지<br><br>⚠️ 1억원 초과 일시납은 10년 유지해도 비과세 불가` },
+  { id:103, cat_id:33, type:'qa', title:'사망보험금 상속세 부과 여부', summary:'상속인이 수령하는 사망보험금은 간주상속재산으로 피상속인 납부 비율만큼 과세.', keywords:['사망보험금','간주상속재산'], question:'사망보험금에 상속세가 부과되나요?', answer:`네, 피보험자 사망으로 상속인이 수령하는 사망보험금은 <strong>간주상속재산</strong>으로 상속세 과세대상입니다.<br><br><strong>과세 계산</strong>: 보험금 × (피상속인 납부 보험료 / 총 납부 보험료)<br><br>상속인이 직접 납부한 보험료에 해당하는 부분은 비과세됩니다.` },
+  { id:104, cat_id:61, type:'qa', title:'자녀 증여세 공제 한도', summary:'성년 자녀 10년간 5천만원. 혼인·출산 시 1억원 추가 공제.', keywords:['증여세','5000만원','혼인공제'], question:'부모가 자녀에게 세금 없이 줄 수 있는 최대 금액은 얼마인가요?', answer:`<strong>10년 단위</strong> 증여재산공제:<br>• 성년 자녀: <strong>5,000만원</strong><br>• 미성년 자녀: <strong>2,000만원</strong><br><br>혼인 전후 2년 또는 출산 후 2년 이내 증여 시 <strong>1억원 추가</strong> 공제<br><br>→ 혼인하는 성년 자녀: 5,000만원 + 1억원 = <strong>1억5,000만원</strong>` }
 ];
 
 const EXAMPLES = [
-  { id:201, cat_id:31, type:'example', title:'저축성보험 비과세 요건 충족 사례', summary:'월 100만원씩 10년간 납입한 보험차익 비과세 판정.', keywords:['저축성보험','비과세','10년','150만원'], page:20, law:'소득세법 제16조', situation:'45세 남성이 2016년 1월 월 100만원씩 저축성보험에 가입, 10년 유지 후 만기보험금 수령. 보험차익 3,000만원.', analysis:`<strong>월적립식 비과세 요건 검토</strong>:<br>① ✅ 납입기간: 10년 (5년 이상 충족)<br>② ✅ 유지기간: 10년 (10년 이상 충족)<br>③ ✅ 월 보험료: 100만원 (150만원 이하 충족)`, conclusion:'보험차익 3,000만원은 <strong>이자소득세 비과세</strong>입니다. 별도의 신고 의무가 없습니다.' },
-  { id:205, cat_id:61, type:'example', title:'결혼 자녀 증여세 공제', summary:'성년 자녀 혼인 시 최대 1억5,000만원 증여세 없음.', keywords:['증여재산공제','혼인공제','1억5천만원'], page:43, law:'상증법 제53조', situation:'결혼을 앞둔 30세 자녀에게 부모가 결혼 준비금을 증여하려 함. 이전 10년간 증여 없음.', analysis:`적용 가능한 공제:<br>① 직계존속 공제(성년): <strong>5,000만원</strong><br>② 혼인 공제(혼인신고 전후 2년 이내): <strong>1억원</strong><br>합산: <strong>1억5,000만원</strong>`, conclusion:'결혼을 앞둔 자녀에게 부모가 합산 <strong>1억5,000만원</strong>까지 증여세 없이 지원 가능합니다.' },
-  { id:206, cat_id:71, type:'example', title:'배우자·자녀 2인 상속세 계산', summary:'상속재산 12억원, 일괄 5억+배우자 5억 공제 후 과세표준 2억원.', keywords:['상속세 계산','배우자공제','일괄공제','과세표준'], page:49, law:'상증법 제19조', situation:'피상속인 사망으로 배우자와 성년 자녀 2명이 상속. 총 상속재산 12억원.', analysis:`상속공제 적용:<br>• 일괄공제: 5억원<br>• 배우자 공제: 5억원 (최소 보장)<br><br>과세표준: 12억 - 5억 - 5억 = <strong>2억원</strong><br>산출세액: 2억원 × 20% - 1,000만원 = <strong>3,000만원</strong>`, conclusion:'납부세액은 신고세액공제 3%를 제외한 <strong>약 2,910만원</strong>입니다.' }
+  { id:201, cat_id:31, type:'example', title:'저축성보험 비과세 사례', summary:'월 100만원씩 10년간 납입한 보험차익 비과세 판정.', keywords:['저축성보험','비과세'], situation:'45세 남성이 2016년 1월 월 100만원씩 저축성보험에 가입, 10년 유지 후 만기보험금 수령. 보험차익 3,000만원.', analysis:`<strong>월적립식 비과세 요건 검토</strong>:<br>① ✅ 납입기간: 10년 (5년 이상 충족)<br>② ✅ 유지기간: 10년 (10년 이상 충족)<br>③ ✅ 월 보험료: 100만원 (150만원 이하 충족)`, conclusion:'보험차익 3,000만원은 <strong>이자소득세 비과세</strong>입니다. 별도의 신고 의무가 없습니다.' },
+  { id:202, cat_id:61, type:'example', title:'결혼 자녀 증여세 공제', summary:'성년 자녀 혼인 시 최대 1억5,000만원 증여세 없음.', keywords:['혼인공제','1억5천만원'], situation:'결혼을 앞둔 30세 자녀에게 부모가 결혼 준비금을 증여하려 함. 이전 10년간 증여 없음.', analysis:`적용 가능한 공제:<br>① 직계존속 공제(성년): <strong>5,000만원</strong><br>② 혼인 공제(혼인신고 전후 2년 이내): <strong>1억원</strong><br>합산: <strong>1억5,000만원</strong>`, conclusion:'결혼을 앞둔 자녀에게 부모가 합산 <strong>1억5,000만원</strong>까지 증여세 없이 지원 가능합니다.' },
+  { id:203, cat_id:71, type:'example', title:'상속세 계산 사례', summary:'상속재산 12억원, 일괄 5억+배우자 5억 공제 후 과세표준 2억원.', keywords:['상속세','배우자공제'], situation:'피상속인 사망으로 배우자와 성년 자녀 2명이 상속. 총 상속재산 12억원.', analysis:`상속공제 적용:<br>• 일괄공제: 5억원<br>• 배우자 공제: 5억원 (최소 보장)<br><br>과세표준: 12억 - 5억 - 5억 = <strong>2억원</strong><br>산출세액: 2억원 × 20% - 1,000만원 = <strong>3,000만원</strong>`, conclusion:'납부세액은 신고세액공제 3%를 제외한 <strong>약 2,910만원</strong>입니다.' }
 ];
 
 const CALCULATORS = [
-  { id:301, cat_id:91, type:'calculator', calcType:'gift', title:'🎁 증여세 간편 계산기', summary:'증여재산가액과 가족관계(공제액)에 따른 예상 증여세를 계산합니다.', keywords:['계산기','증여세','증여'] },
-  { id:302, cat_id:91, type:'calculator', calcType:'inheritance', title:'📜 상속세 간편 계산기', summary:'상속재산과 배우자 유무에 따른 예상 상속세(일괄공제 적용)를 계산합니다.', keywords:['계산기','상속세','상속'] },
-  { id:303, cat_id:92, type:'calculator', calcType:'pension', title:'📈 연금 수령액 시뮬레이터', summary:'예상 연수익률과 물가상승률을 반영하여 미래 연금 적립액과 수령한도를 시뮬레이션합니다.', keywords:['계산기','연금','수익률','인플레','물가'] },
-  { id:304, cat_id:92, type:'calculator', calcType:'income', title:'💴 종합소득세 예상 계산기', summary:'근로/사업소득을 합산하여 종합소득세 과세표준과 예상 납부세액을 계산합니다.', keywords:['계산기','소득세','종합소득세'] },
-  { id:305, cat_id:92, type:'calculator', calcType:'pension_tax', title:'🧾 연금소득세 및 솔루션 계산기', summary:'공무원/국민연금, 사적/비과세 연금을 종합하여 세액을 계산하고, 부족한 은퇴자금 보완책을 제시합니다.', keywords:['계산기','연금소득세','사적연금','공적연금','공무원연금','솔루션'] }
+  { id:301, cat_id:91, type:'calculator', calcType:'gift', title:'🎁 증여세 간편 계산기', summary:'증여재산가액과 가족관계에 따른 예상 증여세를 계산합니다.', keywords:['계산기','증여세'] },
+  { id:302, cat_id:91, type:'calculator', calcType:'inheritance', title:'📜 상속세 간편 계산기', summary:'상속재산과 배우자 유무에 따른 예상 상속세를 계산합니다.', keywords:['계산기','상속세'] },
+  { id:303, cat_id:92, type:'calculator', calcType:'pension', title:'📈 연금 수령액 시뮬레이터', summary:'수익률과 물가상승률을 반영하여 미래 연금 적립액과 수령한도를 시뮬레이션합니다.', keywords:['계산기','연금','수익률'] },
+  { id:305, cat_id:92, type:'calculator', calcType:'pension_tax', title:'🧾 연금소득세 & 보완 솔루션 계산기', summary:'직역연금(공무원 등), 사적연금을 종합하여 세금을 계산하고 부족한 은퇴자금 보완책을 제시합니다.', keywords:['계산기','연금소득세','솔루션','공무원'] }
 ];
 
 const ALL_DATA = [...ARTICLES, ...QA_ITEMS, ...EXAMPLES, ...CALCULATORS];
 
+// ── STREAMING_CHUNK:Application Logic & Render Functions... ──
 let filterType = 'all';
 let filterCat = null;
 let filterSubCat = null;
@@ -268,7 +280,6 @@ const resultCount = document.getElementById('resultCount');
 const resultTitle = document.getElementById('resultTitle');
 const modalOverlay = document.getElementById('modalOverlay');
 const modalBody = document.getElementById('modalBody');
-const scrollTopBtn = document.getElementById('scrollTopBtn');
 
 const getMainCatId = (catId) => catId <= 9 ? catId : (CAT_MAP[catId] || catId);
 
@@ -278,10 +289,10 @@ function renderCats() {
     const cnt = ALL_DATA.filter(d => getMainCatId(d.cat_id) === c.id).length;
     const isSel = filterCat === c.id;
     return `
-      <div onclick="toggleCat(${c.id})" class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-2xl cursor-pointer transition-all duration-200 border-2 ${isSel ? 'border-primary-500 bg-primary-50 shadow-md transform scale-[0.98]' : 'border-transparent bg-white shadow-sm hover:shadow-md hover:border-primary-100'}">
-        <span class="text-2xl sm:text-3xl mb-1.5 transition-transform ${isSel ? 'scale-110' : ''}">${c.emoji}</span>
-        <div class="text-[0.65rem] sm:text-xs font-bold text-center leading-tight ${isSel ? 'text-primary-800' : 'text-slate-700'}">${c.name}</div>
-        <div class="text-[0.6rem] sm:text-[0.65rem] mt-1 ${isSel ? 'text-primary-500' : 'text-slate-400'}">${cnt}개</div>
+      <div onclick="toggleCat(${c.id})" class="shrink-0 w-24 sm:w-28 flex flex-col items-center justify-center p-3 rounded-2xl cursor-pointer transition-all duration-300 border-2 snap-center ${isSel ? 'border-brand-500 bg-brand-50 shadow-md transform scale-95' : 'border-transparent bg-white shadow-soft hover:shadow-md hover:bg-brand-50/50'}">
+        <span class="text-3xl mb-2 block transition-transform ${isSel ? 'scale-110' : ''}">${c.emoji}</span>
+        <div class="text-[0.7rem] sm:text-xs font-bold text-center leading-tight ${isSel ? 'text-brand-800' : 'text-slate-600'} break-keep">${c.name}</div>
+        <div class="text-[0.65rem] mt-1 font-semibold ${isSel ? 'text-brand-500' : 'text-slate-400'}">${cnt}</div>
       </div>
     `;
   }).join('');
@@ -294,9 +305,9 @@ function renderCats() {
         const cnt = ALL_DATA.filter(d => d.cat_id === s.id).length;
         const isSel = filterSubCat === s.id;
         return `
-          <button onclick="toggleSubCat(${s.id})" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${isSel ? 'bg-primary-50 border-primary-300 text-primary-700 shadow-sm' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}">
+          <button onclick="toggleSubCat(${s.id})" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${isSel ? 'bg-brand-700 text-white' : 'bg-white text-brand-600 border border-brand-100 hover:bg-brand-50'}">
             <span>${s.name}</span>
-            <span class="px-1.5 py-0.5 rounded-md text-[10px] ${isSel ? 'bg-primary-200 text-primary-800' : 'bg-slate-100 text-slate-500'}">${cnt}</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[10px] ${isSel ? 'bg-brand-900 text-brand-100' : 'bg-brand-100 text-brand-600'}">${cnt}</span>
           </button>
         `;
       }).join('');
@@ -320,11 +331,11 @@ function toggleSubCat(id) {
 }
 function setFilter(type, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => {
-    b.classList.remove('active', 'bg-slate-800', 'text-white', 'shadow-md');
-    b.classList.add('bg-white', 'text-slate-600');
+    b.classList.remove('active', 'bg-brand-900', 'text-white', 'shadow-md');
+    b.classList.add('bg-white', 'text-brand-600');
   });
-  btn.classList.remove('bg-white', 'text-slate-600');
-  btn.classList.add('active', 'bg-slate-800', 'text-white', 'shadow-md');
+  btn.classList.remove('bg-white', 'text-brand-600');
+  btn.classList.add('active', 'bg-brand-900', 'text-white', 'shadow-md');
 
   const catNames = ['조세일반','보험','금융소득','연금','증여세','상속세'];
   if (catNames.some(n => type.includes(n))) {
@@ -380,7 +391,7 @@ function renderList() {
   }
 
   if (searchQuery) {
-    resultTitle.innerHTML = `검색 결과 <span class="text-primary-600">"${searchQuery}"</span>`;
+    resultTitle.innerHTML = `검색 결과 <span class="text-brand-500">"${searchQuery}"</span>`;
   } else if (filterSubCat) {
     const sub = CATEGORIES.find(c => c.id === filterSubCat);
     resultTitle.textContent = `${sub.emoji} ${sub.name}`;
@@ -389,18 +400,18 @@ function renderList() {
     resultTitle.textContent = `${cat.emoji} ${cat.name}`;
   } else {
     resultTitle.textContent = filterType === 'all' ? '전체 문서' : 
-                              filterType === 'article' ? '본문 모아보기' : 
+                              filterType === 'article' ? '핵심 본문' : 
                               filterType === 'qa' ? 'Q&A 모아보기' : 
-                              filterType === 'calculator' ? '계산기 모아보기' : '사례 모아보기';
+                              filterType === 'calculator' ? '스마트 계산기' : '실전 사례';
   }
   resultCount.textContent = `${data.length}건`;
 
   if (data.length === 0) {
     contentList.innerHTML = `
-      <div class="py-16 text-center bg-white rounded-2xl border border-slate-100 shadow-sm">
-        <div class="text-4xl mb-3 opacity-50">🔍</div>
-        <h3 class="text-slate-600 font-medium">검색 결과가 없습니다</h3>
-        <p class="text-slate-400 text-sm mt-1">다른 키워드로 검색해보세요.</p>
+      <div class="py-20 text-center bg-white rounded-[1.5rem] shadow-soft">
+        <div class="text-5xl mb-4 opacity-30">🔍</div>
+        <h3 class="text-brand-800 font-extrabold text-lg">검색 결과가 없습니다</h3>
+        <p class="text-brand-400 text-sm mt-2">다른 키워드로 검색해보세요.</p>
       </div>`;
     return;
   }
@@ -410,78 +421,82 @@ function renderList() {
     const cat = CATEGORIES.find(c => c.id === getMainCatId(item.cat_id));
     
     const badgeMap = {
-      article: { text: '📄 본문', class: 'bg-blue-50 text-blue-700 border-blue-200' },
-      qa: { text: '❓ Q&A', class: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
-      example: { text: '📊 사례', class: 'bg-amber-50 text-amber-700 border-amber-200' },
-      calculator: { text: '🧮 계산기', class: 'bg-purple-50 text-purple-700 border-purple-200' }
+      article: { text: '📄 본문', class: 'bg-blue-50 text-blue-700' },
+      qa: { text: '❓ Q&A', class: 'bg-emerald-50 text-emerald-700' },
+      example: { text: '📊 사례', class: 'bg-amber-50 text-amber-700' },
+      calculator: { text: '🧮 계산기', class: 'bg-purple-50 text-purple-700' }
     };
     const badge = badgeMap[item.type];
-    const hintColor = item.type === 'article' ? 'bg-blue-400' : item.type === 'qa' ? 'bg-emerald-400' : item.type === 'calculator' ? 'bg-purple-400' : 'bg-amber-400';
 
     return `
-      <div onclick="openModal(${item.id})" class="group bg-white rounded-2xl p-4 sm:p-5 border border-slate-100 shadow-sm hover:shadow-md hover:border-primary-200 transition-all duration-200 cursor-pointer animate-fade-in relative overflow-hidden">
-        <div class="absolute left-0 top-0 bottom-0 w-1 ${hintColor} opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        <div class="flex justify-between items-start gap-3 mb-2.5">
-          <h3 class="text-base sm:text-lg font-bold text-slate-800 leading-snug group-hover:text-primary-700 transition-colors">
-            ${isQa ? '<span class="text-emerald-600 mr-1">Q.</span>' : ''}${item.title || item.question}
+      <div onclick="openModal(${item.id})" class="group bg-white rounded-[1.5rem] p-5 sm:p-6 shadow-soft hover:shadow-float hover:-translate-y-0.5 transition-all duration-300 cursor-pointer animate-fade-in border border-transparent hover:border-brand-100">
+        <div class="flex justify-between items-start gap-4 mb-3">
+          <h3 class="text-[1.05rem] sm:text-lg font-extrabold text-brand-900 leading-snug group-hover:text-brand-600 transition-colors">
+            ${isQa ? '<span class="text-emerald-500 mr-1.5">Q.</span>' : ''}${item.title || item.question}
           </h3>
-          <span class="shrink-0 px-2.5 py-1 text-[0.7rem] font-bold rounded-md border ${badge.class}">${badge.text}</span>
+          <span class="shrink-0 px-2.5 py-1 text-[0.7rem] font-bold rounded-lg ${badge.class}">${badge.text}</span>
         </div>
-        <p class="text-sm text-slate-500 leading-relaxed mb-4 line-clamp-2">${item.summary || ''}</p>
+        <p class="text-[0.9rem] text-brand-500 leading-relaxed mb-4 line-clamp-2">${item.summary || ''}</p>
         <div class="flex flex-wrap items-center gap-2 mt-auto">
-          ${cat ? `<span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-50 text-slate-500 border border-slate-100">${cat.emoji} ${cat.name}</span>` : ''}
-          ${item.page ? `<span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-50 text-slate-400 border border-slate-100">p.${item.page}</span>` : ''}
-          ${item.law ? `<span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-50 text-slate-400 border border-slate-100 truncate max-w-[150px]">⚖️ ${item.law}</span>` : ''}
+          ${cat ? `<span class="inline-flex items-center px-2.5 py-1 rounded-md text-[0.75rem] font-semibold bg-brand-50 text-brand-600">${cat.emoji} ${cat.name}</span>` : ''}
+          ${item.page ? `<span class="inline-flex items-center px-2.5 py-1 rounded-md text-[0.75rem] font-semibold bg-slate-50 text-slate-500">p.${item.page}</span>` : ''}
+          ${item.law ? `<span class="inline-flex items-center px-2.5 py-1 rounded-md text-[0.75rem] font-semibold bg-slate-50 text-slate-500 truncate max-w-[150px]">⚖️ ${item.law}</span>` : ''}
         </div>
       </div>
     `;
   }).join('');
 }
 
+// ── STREAMING_CHUNK:Modal and Calculator Logic... ──
 function openModal(id) {
   const item = ALL_DATA.find(d => d.id === id);
   if (!item) return;
 
   document.getElementById('modalTitle').innerHTML = item.type === 'qa' 
-    ? `<span class="text-emerald-600 mr-1.5">Q.</span>${item.question}` : item.title;
+    ? `<span class="text-emerald-500 mr-2">Q.</span>${item.question}` : item.title;
 
   let body = '';
   
   if (item.law || item.page) {
     body += `<div class="flex flex-wrap gap-2 mb-6">`;
-    if (item.law) body += `<span class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-600">⚖️ 근거: ${item.law}</span>`;
-    if (item.page) body += `<span class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-600">📄 교재 p.${item.page}</span>`;
+    if (item.law) body += `<span class="inline-flex items-center px-3 py-1 rounded-lg bg-brand-50 text-xs font-bold text-brand-600">⚖️ 근거: ${item.law}</span>`;
+    if (item.page) body += `<span class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-100 text-xs font-bold text-slate-600">📄 교재 p.${item.page}</span>`;
     body += `</div>`;
   }
 
-  const inputClass = "block w-full rounded-xl border-0 py-3 px-4 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm bg-white";
-  const labelClass = "block text-sm font-semibold leading-6 text-slate-800 mb-1.5";
-  const btnClass = "mt-6 w-full rounded-xl bg-primary-600 px-4 py-3.5 text-sm font-bold text-white shadow-sm hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2 transition-colors";
+  const inputClass = "block w-full rounded-2xl border-0 py-3.5 px-4 text-brand-900 bg-brand-50 shadow-inner ring-1 ring-inset ring-transparent focus:ring-2 focus:ring-inset focus:ring-brand-500 focus:bg-white sm:text-[0.95rem] transition-all outline-none";
+  const labelClass = "block text-[0.9rem] font-bold text-brand-800 mb-2";
+  const btnClass = "mt-8 w-full rounded-2xl bg-brand-900 px-4 py-4 text-[0.95rem] font-bold text-white shadow-md hover:bg-brand-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transition-all active:scale-[0.98]";
 
   if (item.type === 'qa') {
-    body += `<div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 mb-2 relative">
-              <div class="absolute -top-3 left-4 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">답변 (Answer)</div>
-              <div class="prose mt-2 text-emerald-900">${item.answer}</div>
-             </div>`;
+    body += `
+      <div class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-6 mb-2 relative">
+        <div class="absolute -top-3 left-5 bg-emerald-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm tracking-wide">답변 (Answer)</div>
+        <div class="prose mt-3 text-emerald-950">${item.answer}</div>
+      </div>`;
   } else if (item.type === 'example') {
-    body += `<div class="space-y-4">
-              <div class="bg-amber-50 border border-amber-100 rounded-2xl p-5">
-                <div class="text-xs font-bold text-amber-600 uppercase tracking-wider mb-2 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>상황 (Situation)</div>
-                <p class="text-slate-700 text-sm leading-relaxed">${item.situation}</p>
-              </div>
-              <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5">
-                <div class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>분석 (Analysis)</div>
-                <div class="prose">${item.analysis || item.calculation || ''}</div>
-              </div>
-              ${item.conclusion ? `<div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
-                <div class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>결론 (Conclusion)</div>
-                <div class="prose font-medium text-slate-800">${item.conclusion}</div>
-              </div>` : ''}
-             </div>`;
+    body += `
+      <div class="space-y-4">
+        <div class="bg-amber-50/50 border border-amber-100 rounded-2xl p-6">
+          <div class="text-xs font-extrabold text-amber-600 uppercase tracking-widest mb-3 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>상황 (Situation)</div>
+          <p class="text-amber-950 text-[0.95rem] leading-relaxed">${item.situation}</p>
+        </div>
+        <div class="bg-blue-50/50 border border-blue-100 rounded-2xl p-6">
+          <div class="text-xs font-extrabold text-blue-600 uppercase tracking-widest mb-3 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>분석 (Analysis)</div>
+          <div class="prose text-blue-950">${item.analysis || item.calculation || ''}</div>
+        </div>
+        ${item.conclusion ? `
+        <div class="bg-brand-50/50 border border-brand-100 rounded-2xl p-6">
+          <div class="text-xs font-extrabold text-brand-600 uppercase tracking-widest mb-3 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>결론 (Conclusion)</div>
+          <div class="prose font-bold text-brand-900">${item.conclusion}</div>
+        </div>` : ''}
+      </div>`;
   } else if (item.type === 'calculator') {
-    body += `<div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
-      <div class="mb-5 text-sm text-slate-500 bg-slate-50 p-3 rounded-lg border border-slate-100">💡 단위는 모두 <strong>'만 원'</strong> 기준입니다.</div>
-      <div class="space-y-4">`;
+    body += `
+      <div class="bg-white rounded-3xl border border-brand-100 p-6 sm:p-8 shadow-soft">
+        <div class="mb-6 text-sm text-brand-600 bg-brand-50 px-4 py-3 rounded-xl font-medium flex items-center gap-2"><span class="text-lg">💡</span> 입력 단위는 모두 <strong>'만 원'</strong> 기준입니다.</div>
+        <div id="calcError" class="hidden mb-4 p-4 bg-rose-50 text-rose-600 rounded-xl text-sm font-bold animate-fade-in"></div>
+        <div class="space-y-5">`;
 
     if (item.calcType === 'gift') {
       body += `
@@ -497,21 +512,20 @@ function openModal(id) {
           </select>
         </div>
         <button onclick="execCalcGift()" class="${btnClass}">예상 증여세 계산하기</button>
-        <div id="calcResult" class="hidden mt-6 bg-purple-50 border border-purple-100 rounded-xl p-5"></div>
+        <div id="calcResult" class="hidden mt-6 bg-purple-50 border border-purple-100 rounded-2xl p-6 animate-fade-in"></div>
       `;
     } else if (item.calcType === 'inheritance') {
       body += `
-        <div><label class="${labelClass}">상속재산가액 (본래+간주+사전증여, 만원)</label><input type="number" id="inhAmt" class="${inputClass}" placeholder="예: 150000 (15억)"></div>
+        <div><label class="${labelClass}">총 상속재산가액 (만원)</label><input type="number" id="inhAmt" class="${inputClass}" placeholder="예: 150000 (15억)"></div>
         <div>
-          <label class="${labelClass}">배우자 생존 여부 (상속공제 기준)</label>
+          <label class="${labelClass}">배우자 생존 여부 (단순공제)</label>
           <select id="inhSpouse" class="${inputClass}">
-            <option value="100000">배우자 있음 (최소 10억 공제: 일괄5억+배우자5억)</option>
+            <option value="100000">배우자 생존 (최소 10억 공제 보장)</option>
             <option value="50000">배우자 없음 (일괄 5억 공제)</option>
           </select>
         </div>
-        <div class="text-xs text-slate-400 mt-1">※ 채무/장례비 및 기타 공제는 생략된 단순 시뮬레이션입니다.</div>
         <button onclick="execCalcInh()" class="${btnClass}">예상 상속세 계산하기</button>
-        <div id="calcResult" class="hidden mt-6 bg-purple-50 border border-purple-100 rounded-xl p-5"></div>
+        <div id="calcResult" class="hidden mt-6 bg-purple-50 border border-purple-100 rounded-2xl p-6 animate-fade-in"></div>
       `;
     } else if (item.calcType === 'pension') {
       body += `
@@ -520,28 +534,20 @@ function openModal(id) {
           <div><label class="${labelClass}">연금 개시 연령</label><input type="number" id="penStartAge" class="${inputClass}" value="65"></div>
         </div>
         <div><label class="${labelClass}">현재 적립금 (만원)</label><input type="number" id="penCurr" class="${inputClass}" value="5000"></div>
-        <div><label class="${labelClass}">매월 추가 납입액 (만원)</label><input type="number" id="penMon" class="${inputClass}" value="50"></div>
+        <div><label class="${labelClass}">매월 추가 납입 (만원)</label><input type="number" id="penMon" class="${inputClass}" value="50"></div>
         <div class="grid grid-cols-2 gap-4">
           <div><label class="${labelClass}">예상 연수익률 (%)</label><input type="number" id="penYield" class="${inputClass}" value="5"></div>
           <div><label class="${labelClass}">예상 물가상승률 (%)</label><input type="number" id="penInf" class="${inputClass}" value="2.5"></div>
         </div>
         <button onclick="execCalcPen()" class="${btnClass}">연금 시뮬레이션 돌리기</button>
-        <div id="calcResult" class="hidden mt-6 bg-purple-50 border border-purple-100 rounded-xl p-5"></div>
-      `;
-    } else if (item.calcType === 'income') {
-      body += `
-        <div><label class="${labelClass}">총급여액 (근로소득, 만원)</label><input type="number" id="incEarned" class="${inputClass}" value="5000"></div>
-        <div><label class="${labelClass}">기타 사업/부업 소득 (만원)</label><input type="number" id="incBiz" class="${inputClass}" value="1000"></div>
-        <div><label class="${labelClass}">종합소득공제액 (만원, 본인/가족 등 기본공제)</label><input type="number" id="incDed" class="${inputClass}" value="300"></div>
-        <button onclick="execCalcInc()" class="${btnClass}">예상 소득세 계산하기</button>
-        <div id="calcResult" class="hidden mt-6 bg-purple-50 border border-purple-100 rounded-xl p-5"></div>
+        <div id="calcResult" class="hidden mt-6 bg-brand-50 border border-brand-200 rounded-2xl p-6 animate-fade-in"></div>
       `;
     } else if (item.calcType === 'pension_tax') {
       body += `
-        <h4 class="font-bold text-slate-700 mb-3 border-b border-slate-200 pb-2">1. 공적/사적 연금 수령액 입력</h4>
+        <h4 class="font-extrabold text-brand-900 mb-4 pb-2 border-b-2 border-brand-100">1. 연금 수령 정보 입력</h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
-            <label class="${labelClass}">공적연금 종류</label>
+            <label class="${labelClass}">직역(공적)연금 종류</label>
             <select id="ptPubType" class="${inputClass}">
               <option value="국민연금">국민연금</option>
               <option value="공무원연금">직역연금 (공무원, 교직, 경찰, 소방 등)</option>
@@ -550,30 +556,30 @@ function openModal(id) {
             </select>
           </div>
           <div>
-            <label class="${labelClass}">수령 시점 연령 (사적연금 세율 결정)</label>
+            <label class="${labelClass}">연금 수령 연령</label>
             <select id="ptAge" class="${inputClass}">
-              <option value="5">70세 미만 (5%)</option>
+              <option value="5">70세 미만 (사적연금 5%)</option>
               <option value="4">70세 이상 ~ 80세 미만 (4%)</option>
               <option value="3">80세 이상 (3%)</option>
             </select>
           </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-          <div><label class="${labelClass}">공적연금 연수령액<br><span class="text-xs text-slate-400 font-normal">(과세대상액)</span></label><input type="number" id="ptPub" class="${inputClass}" value="3600"></div>
-          <div><label class="${labelClass}">사적연금 연수령액<br><span class="text-xs text-slate-400 font-normal">(세액공제분+운용수익)</span></label><input type="number" id="ptPriv" class="${inputClass}" value="1000"></div>
-          <div><label class="${labelClass}">비과세 연금 수령액<br><span class="text-xs text-slate-400 font-normal">(과세제외분 등)</span></label><input type="number" id="ptTaxFree" class="${inputClass}" value="500"></div>
+          <div><label class="${labelClass}">공적연금액<br><span class="text-[0.7rem] text-brand-400 font-normal mt-0.5 block">(과세대상 연수령액)</span></label><input type="number" id="ptPub" class="${inputClass}" value="3600"></div>
+          <div><label class="${labelClass}">사적연금액<br><span class="text-[0.7rem] text-brand-400 font-normal mt-0.5 block">(세액공제분+수익 연인출)</span></label><input type="number" id="ptPriv" class="${inputClass}" value="1000"></div>
+          <div><label class="${labelClass}">비과세 연금액<br><span class="text-[0.7rem] text-brand-400 font-normal mt-0.5 block">(과세제외분 연수령액)</span></label><input type="number" id="ptTaxFree" class="${inputClass}" value="500"></div>
         </div>
 
-        <h4 class="font-bold text-slate-700 mb-3 border-b border-slate-200 pb-2">2. 은퇴 목표 및 보완 솔루션 설정</h4>
+        <h4 class="font-extrabold text-brand-900 mt-8 mb-4 pb-2 border-b-2 border-brand-100">2. 은퇴 솔루션 설정 (부족분 역산)</h4>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-2">
-          <div><label class="${labelClass}">목표 연간 실수령액<br><span class="text-xs text-slate-400 font-normal">(예: 6000)</span></label><input type="number" id="ptTarget" class="${inputClass}" value="6000"></div>
-          <div><label class="${labelClass}">은퇴까지 남은 기간<br><span class="text-xs text-slate-400 font-normal">(년 단위)</span></label><input type="number" id="ptYears" class="${inputClass}" value="10"></div>
-          <div><label class="${labelClass}">추가저축 연수익률<br><span class="text-xs text-slate-400 font-normal">(%)</span></label><input type="number" id="ptYield" class="${inputClass}" value="5"></div>
+          <div><label class="${labelClass}">목표 은퇴생활비<br><span class="text-[0.7rem] text-brand-400 font-normal mt-0.5 block">(연간 세후 실수령 목표)</span></label><input type="number" id="ptTarget" class="${inputClass}" value="6000"></div>
+          <div><label class="${labelClass}">은퇴까지 남은 기간<br><span class="text-[0.7rem] text-brand-400 font-normal mt-0.5 block">(년 단위)</span></label><input type="number" id="ptYears" class="${inputClass}" value="10"></div>
+          <div><label class="${labelClass}">추가저축 연수익률<br><span class="text-[0.7rem] text-brand-400 font-normal mt-0.5 block">(%)</span></label><input type="number" id="ptYield" class="${inputClass}" value="5"></div>
         </div>
-        <div class="text-[11px] text-slate-500 mb-4">※ 은퇴 후 20년간 해당 수익률로 운용하며 인출한다는 가정하에 필요 저축액을 산출합니다. (이연퇴직소득은 편의상 제외)</div>
+        <div class="text-[0.7rem] text-brand-500 mb-2 leading-relaxed">※ 목표 대비 부족한 금액을 은퇴 후 20년간 해당 수익률로 인출한다고 가정하여, 지금부터 매월 필요한 추가 저축액을 계산합니다.</div>
 
-        <button onclick="execCalcPensionTax()" class="${btnClass}">연금소득세 및 보완 솔루션 계산하기</button>
-        <div id="calcResult" class="hidden mt-6"></div>
+        <button onclick="execCalcPensionTax()" class="${btnClass}">연금소득세 및 솔루션 확인</button>
+        <div id="calcResult" class="hidden mt-6 animate-fade-in"></div>
       `;
     }
     body += `</div></div>`;
@@ -581,6 +587,7 @@ function openModal(id) {
     body += `<div class="prose max-w-none">${item.content || item.summary}</div>`;
   }
 
+  const modalBody = document.getElementById('modalBody');
   modalBody.innerHTML = body;
   
   modalBody.querySelectorAll('table').forEach(t => {
@@ -592,34 +599,48 @@ function openModal(id) {
     }
   });
 
-  document.getElementById('modal').scrollTop = 0;
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalContent = document.getElementById('modal');
+  
+  modalBody.scrollTop = 0;
   modalOverlay.classList.remove('hidden');
-  void modalOverlay.offsetWidth;
+  void modalOverlay.offsetWidth; // reflow
   modalOverlay.classList.remove('opacity-0');
   modalOverlay.classList.add('opacity-100');
+  
+  modalContent.classList.remove('translate-y-full');
+  modalContent.classList.add('translate-y-0');
+  
   document.body.style.overflow = 'hidden';
 }
 
-function closeModal(e) { if (e.target === modalOverlay) closeModalDirect(); }
+function closeModal(e) { if (e.target === document.getElementById('modalOverlay')) closeModalDirect(); }
 function closeModalDirect() {
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalContent = document.getElementById('modal');
+  
   modalOverlay.classList.remove('opacity-100');
   modalOverlay.classList.add('opacity-0');
+  
+  modalContent.classList.remove('translate-y-0');
+  modalContent.classList.add('translate-y-full');
+  
   setTimeout(() => {
     modalOverlay.classList.add('hidden');
     document.body.style.overflow = '';
-  }, 300);
+  }, 400); // 바텀시트 내려가는 시간(duration-400)과 일치
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 400) {
-    scrollTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
-    scrollTopBtn.classList.add('opacity-100', 'translate-y-0');
-  } else {
-    scrollTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
-    scrollTopBtn.classList.remove('opacity-100', 'translate-y-0');
-  }
-});
+// ── STREAMING_CHUNK:Calculator Execution Functions... ──
+function showError(msg) {
+  const errDiv = document.getElementById('calcError');
+  errDiv.textContent = msg;
+  errDiv.classList.remove('hidden');
+  document.getElementById('calcResult').classList.add('hidden');
+}
+function hideError() {
+  document.getElementById('calcError').classList.add('hidden');
+}
 
 function getTaxBracket(base) {
   if(base <= 10000) return { rate: 10, prog: 0 };
@@ -630,7 +651,10 @@ function getTaxBracket(base) {
 }
 
 window.execCalcGift = function() {
+  hideError();
   const amt = Number(document.getElementById('giftAmt').value) || 0;
+  if(amt <= 0) return showError("증여재산가액을 입력해주세요.");
+  
   const ded = Number(document.getElementById('giftRel').value) || 0;
   let base = Math.max(0, amt - ded);
   let taxObj = getTaxBracket(base);
@@ -640,22 +664,23 @@ window.execCalcGift = function() {
   const res = document.getElementById('calcResult');
   res.classList.remove('hidden');
   res.innerHTML = `
-    <h3 class="text-lg font-bold text-purple-900 border-b border-purple-200 pb-2 mb-3">계산 결과</h3>
-    <ul class="text-sm text-purple-800 space-y-2 mb-4">
-      <li class="flex justify-between"><span>증여재산가액:</span> <strong>${formatMoney(amt)}</strong></li>
-      <li class="flex justify-between"><span>증여재산공제:</span> <strong>- ${formatMoney(ded)}</strong></li>
-      <li class="flex justify-between"><span>과세표준:</span> <strong>${formatMoney(base)}</strong></li>
-      <li class="flex justify-between"><span>적용세율:</span> <strong>${taxObj.rate}% (누진공제 ${formatMoney(taxObj.prog)})</strong></li>
+    <h3 class="text-lg font-extrabold text-purple-900 border-b-2 border-purple-200 pb-3 mb-4">계산 결과</h3>
+    <ul class="text-[0.95rem] text-purple-800 space-y-3 mb-5">
+      <li class="flex justify-between items-center"><span class="font-medium">과세표준 (가액-공제):</span> <strong class="text-lg">${formatMoney(base)}</strong></li>
+      <li class="flex justify-between items-center"><span class="font-medium">적용세율:</span> <strong>${taxObj.rate}% (누진공제 ${formatMoney(taxObj.prog)})</strong></li>
     </ul>
-    <div class="bg-white rounded-lg p-4 flex justify-between items-center shadow-sm">
-      <span class="font-bold text-slate-700">예상 납부세액<br><span class="text-xs font-normal text-slate-400">(자진신고 3% 공제 적용)</span></span>
-      <span class="text-2xl font-bold text-purple-600">${formatMoney(finalTax)}</span>
+    <div class="bg-white rounded-xl p-5 flex justify-between items-center shadow-sm">
+      <span class="font-bold text-slate-700 leading-tight">예상 납부세액<br><span class="text-xs font-medium text-slate-400">(신고세액공제 3% 적용)</span></span>
+      <span class="text-2xl font-extrabold text-purple-600">${formatMoney(finalTax)}</span>
     </div>
   `;
 };
 
 window.execCalcInh = function() {
+  hideError();
   const amt = Number(document.getElementById('inhAmt').value) || 0;
+  if(amt <= 0) return showError("상속재산가액을 입력해주세요.");
+  
   const ded = Number(document.getElementById('inhSpouse').value) || 0;
   let base = Math.max(0, amt - ded);
   let taxObj = getTaxBracket(base);
@@ -665,21 +690,20 @@ window.execCalcInh = function() {
   const res = document.getElementById('calcResult');
   res.classList.remove('hidden');
   res.innerHTML = `
-    <h3 class="text-lg font-bold text-purple-900 border-b border-purple-200 pb-2 mb-3">계산 결과</h3>
-    <ul class="text-sm text-purple-800 space-y-2 mb-4">
-      <li class="flex justify-between"><span>총 상속재산:</span> <strong>${formatMoney(amt)}</strong></li>
-      <li class="flex justify-between"><span>상속공제 (단순가정):</span> <strong>- ${formatMoney(ded)}</strong></li>
-      <li class="flex justify-between"><span>과세표준:</span> <strong>${formatMoney(base)}</strong></li>
-      <li class="flex justify-between"><span>적용세율:</span> <strong>${taxObj.rate}% (누진공제 ${formatMoney(taxObj.prog)})</strong></li>
+    <h3 class="text-lg font-extrabold text-purple-900 border-b-2 border-purple-200 pb-3 mb-4">계산 결과</h3>
+    <ul class="text-[0.95rem] text-purple-800 space-y-3 mb-5">
+      <li class="flex justify-between items-center"><span class="font-medium">과세표준 (가액-공제):</span> <strong class="text-lg">${formatMoney(base)}</strong></li>
+      <li class="flex justify-between items-center"><span class="font-medium">적용세율:</span> <strong>${taxObj.rate}% (누진공제 ${formatMoney(taxObj.prog)})</strong></li>
     </ul>
-    <div class="bg-white rounded-lg p-4 flex justify-between items-center shadow-sm">
-      <span class="font-bold text-slate-700">예상 납부세액<br><span class="text-xs font-normal text-slate-400">(자진신고 3% 공제 적용)</span></span>
-      <span class="text-2xl font-bold text-purple-600">${formatMoney(finalTax)}</span>
+    <div class="bg-white rounded-xl p-5 flex justify-between items-center shadow-sm">
+      <span class="font-bold text-slate-700 leading-tight">예상 납부세액<br><span class="text-xs font-medium text-slate-400">(신고세액공제 3% 적용)</span></span>
+      <span class="text-2xl font-extrabold text-purple-600">${formatMoney(finalTax)}</span>
     </div>
   `;
 };
 
 window.execCalcPen = function() {
+  hideError();
   const age = Number(document.getElementById('penAge').value) || 0;
   const startAge = Number(document.getElementById('penStartAge').value) || 0;
   const current = Number(document.getElementById('penCurr').value) || 0;
@@ -688,7 +712,7 @@ window.execCalcPen = function() {
   const infRate = Number(document.getElementById('penInf').value) || 0;
   
   const years = startAge - age;
-  if (years <= 0) return alert("연금 개시 연령은 현재 연령보다 커야 합니다.");
+  if (years <= 0) return showError("연금 개시 연령은 현재 연령보다 커야 합니다.");
   
   const n = years * 12;
   const r = yieldRate / 100 / 12;
@@ -696,91 +720,32 @@ window.execCalcPen = function() {
   let fvCurr = current * Math.pow(1 + r, n);
   let fvMon = r === 0 ? monthly * n : monthly * ((Math.pow(1 + r, n) - 1) / r);
   let totalNominal = fvCurr + fvMon;
-  
   let realTotal = totalNominal / Math.pow(1 + infRate/100, years);
   let limitNominal = totalNominal / 10 * 1.2;
 
   const res = document.getElementById('calcResult');
   res.classList.remove('hidden');
   res.innerHTML = `
-    <h3 class="text-lg font-bold text-purple-900 border-b border-purple-200 pb-2 mb-3">연금 시뮬레이션 결과 (${years}년 후)</h3>
-    <ul class="text-sm text-purple-800 space-y-2 mb-4">
-      <li class="flex justify-between"><span>원금 총액 (현재+추가납입):</span> <strong>${formatMoney(current + (monthly * n))}</strong></li>
-      <li class="flex justify-between items-center"><span class="flex-1">미래 적립액 (명목금액):</span> <strong class="text-lg">${formatMoney(totalNominal)}</strong></li>
+    <h3 class="text-lg font-extrabold text-brand-900 border-b-2 border-brand-200 pb-3 mb-4">시뮬레이션 결과 (${years}년 후)</h3>
+    <ul class="text-[0.95rem] text-brand-800 space-y-3 mb-5">
+      <li class="flex justify-between items-center"><span class="font-medium">납입 원금 총액:</span> <strong>${formatMoney(current + (monthly * n))}</strong></li>
+      <li class="flex justify-between items-center"><span class="font-medium">미래 적립액 (명목가치):</span> <strong class="text-lg">${formatMoney(totalNominal)}</strong></li>
     </ul>
-    <div class="bg-white rounded-lg p-4 flex flex-col gap-2 shadow-sm mb-3">
-      <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-        <span class="font-bold text-slate-700 leading-tight">물가상승률 반영 현재가치<br><span class="text-xs font-normal text-slate-400">(실질 구매력)</span></span>
-        <span class="text-xl font-bold text-emerald-600">${formatMoney(realTotal)}</span>
+    <div class="bg-white rounded-xl p-5 flex flex-col gap-3 shadow-sm">
+      <div class="flex justify-between items-center border-b border-brand-50 pb-3">
+        <span class="font-bold text-slate-700 leading-tight">물가상승 반영 현재가치<br><span class="text-xs font-medium text-slate-400">(실질 구매력)</span></span>
+        <span class="text-xl font-extrabold text-emerald-600">${formatMoney(realTotal)}</span>
       </div>
       <div class="flex justify-between items-center pt-1">
-        <span class="font-bold text-slate-700">개시 1년차 수령한도<br><span class="text-xs font-normal text-slate-400">(명목금액 기준, 초과시 기타소득세 16.5%)</span></span>
-        <span class="text-lg font-bold text-blue-600">${formatMoney(limitNominal)}</span>
-      </div>
-    </div>
-  `;
-};
-
-window.execCalcInc = function() {
-  const earned = Number(document.getElementById('incEarned').value) || 0;
-  const biz = Number(document.getElementById('incBiz').value) || 0;
-  const ded = Number(document.getElementById('incDed').value) || 0;
-  
-  let earnedDed = 0;
-  if(earned <= 500) earnedDed = earned * 0.7;
-  else if(earned <= 1500) earnedDed = 350 + (earned-500)*0.4;
-  else if(earned <= 4500) earnedDed = 750 + (earned-1500)*0.15;
-  else if(earned <= 10000) earnedDed = 1200 + (earned-4500)*0.05;
-  else earnedDed = 1475 + (earned-10000)*0.02;
-  
-  if(earnedDed > 2000) earnedDed = 2000;
-  
-  let earnedIncome = Math.max(0, earned - earnedDed);
-  let totalIncome = earnedIncome + biz;
-  let base = Math.max(0, totalIncome - ded);
-  
-  let rate = 0, prog = 0;
-  if(base <= 1400) { rate = 6; prog = 0; }
-  else if(base <= 5000) { rate = 15; prog = 126; }
-  else if(base <= 8800) { rate = 24; prog = 576; }
-  else if(base <= 15000) { rate = 35; prog = 1544; }
-  else if(base <= 30000) { rate = 38; prog = 1994; }
-  else if(base <= 50000) { rate = 40; prog = 2594; }
-  else if(base <= 100000) { rate = 42; prog = 3594; }
-  else { rate = 45; prog = 6594; }
-  
-  let calcTax = Math.max(0, (base * (rate/100)) - prog);
-  let localTax = calcTax * 0.1;
-  let totalTax = calcTax + localTax;
-
-  const res = document.getElementById('calcResult');
-  res.classList.remove('hidden');
-  res.innerHTML = `
-    <h3 class="text-lg font-bold text-purple-900 border-b border-purple-200 pb-2 mb-3">계산 결과</h3>
-    <ul class="text-sm text-purple-800 space-y-2 mb-4">
-      <li class="flex justify-between"><span>근로소득금액 (공제 후):</span> <strong>${formatMoney(earnedIncome)}</strong></li>
-      <li class="flex justify-between"><span>종합소득금액 합산:</span> <strong>${formatMoney(totalIncome)}</strong></li>
-      <li class="flex justify-between"><span>종합소득 과세표준:</span> <strong>${formatMoney(base)}</strong></li>
-      <li class="flex justify-between"><span>적용세율:</span> <strong>${rate}% (누진공제 ${formatMoney(prog)})</strong></li>
-    </ul>
-    <div class="bg-white rounded-lg p-4 flex flex-col gap-2 shadow-sm">
-      <div class="flex justify-between items-center">
-        <span class="font-bold text-slate-700">종합소득세<br><span class="text-xs font-normal text-slate-400">(각종 세액공제 전)</span></span>
-        <span class="text-xl font-bold text-purple-600">${formatMoney(calcTax)}</span>
-      </div>
-      <div class="flex justify-between items-center text-sm border-t border-slate-100 pt-2">
-        <span class="text-slate-500">+ 지방소득세(10%)</span>
-        <span class="text-slate-600">${formatMoney(localTax)}</span>
-      </div>
-      <div class="flex justify-between items-center border-t border-slate-100 pt-2">
-        <span class="font-bold text-slate-800">예상 총 세부담</span>
-        <span class="text-xl font-bold text-rose-500">${formatMoney(totalTax)}</span>
+        <span class="font-bold text-slate-700 leading-tight">개시 1년차 수령한도<br><span class="text-xs font-medium text-slate-400">(초과시 기타소득세 16.5%)</span></span>
+        <span class="text-lg font-extrabold text-blue-600">${formatMoney(limitNominal)}</span>
       </div>
     </div>
   `;
 };
 
 window.execCalcPensionTax = function() {
+  hideError();
   const pubType = document.getElementById('ptPubType').value || '국민연금';
   const ageRate = Number(document.getElementById('ptAge').value) || 5;
   const pub = Number(document.getElementById('ptPub').value) || 0;
@@ -791,17 +756,19 @@ window.execCalcPensionTax = function() {
   const years = Number(document.getElementById('ptYears').value) || 1;
   const yieldRate = Number(document.getElementById('ptYield').value) || 0;
   
-  // 1. 공적연금 계산 (연금소득공제)
+  if (years <= 0) return showError("은퇴까지 남은 기간은 1년 이상이어야 합니다.");
+
+  // 1. 공적연금(직역연금 포함) 연금소득공제 계산
   let pDed = 0;
   if(pub <= 350) pDed = pub;
   else if(pub <= 700) pDed = 350 + (pub-350)*0.4;
   else if(pub <= 1400) pDed = 490 + (pub-700)*0.2;
   else if(pub <= 2100) pDed = 630 + (pub-1400)*0.1;
   else pDed = 700 + (pub-2100)*0.05;
-  if(pDed > 900) pDed = 900; // 한도 900만원
+  if(pDed > 900) pDed = 900;
   
   let pubInc = Math.max(0, pub - pDed);
-  let basePub = Math.max(0, pubInc - 150); // 본인 기본공제 150만 반영
+  let basePub = Math.max(0, pubInc - 150); // 본인 기본공제 150만
   
   let pRate = 0, pProg = 0;
   if(basePub <= 1400) { pRate = 6; pProg = 0; }
@@ -831,7 +798,7 @@ window.execCalcPensionTax = function() {
   let finalTax = totalTax + totalLocalTax;
   let netIncome = totalIncome - finalTax;
   
-  // 4. 부족분 및 보완 솔루션 계산 (PMT 역산)
+  // 4. 부족분 역산 솔루션 계산 (PMT)
   let shortfall = target - netIncome;
   let solutionHtml = '';
   
@@ -860,19 +827,20 @@ window.execCalcPensionTax = function() {
      }
 
      solutionHtml = `
-       <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 shadow-sm mt-5">
-         <h4 class="text-lg font-bold text-blue-900 mb-3 flex items-center gap-2"><span>💡</span> 부족분 보완을 위한 스마트 솔루션</h4>
-         <div class="space-y-3 text-sm text-blue-800">
-           <p class="text-base leading-relaxed">목표하시는 연간 실수령액 대비 현재 예상액이 <strong class="text-rose-500 text-lg">연 ${formatMoney(shortfall)} (월 약 ${formatMoney(monthlyShortfall)}) 부족</strong>합니다.</p>
-           <div class="bg-white p-4 sm:p-5 rounded-lg border border-blue-100 shadow-sm">
-             <p class="mb-3 text-slate-700">은퇴 후 20년간 월 ${formatMoney(monthlyShortfall)}의 연금을 추가로 만들기 위해서는 은퇴 시점에 <strong>약 ${formatMoney(requiredLumpSum)}</strong>의 목돈이 마련되어야 합니다.</p>
-             <div class="flex justify-between items-center bg-blue-100/40 p-4 rounded-xl">
-               <span class="font-medium text-slate-700">은퇴까지 남은 ${years}년 동안<br><span class="text-primary-600 font-bold">매월 필요한 저축액</span></span>
-               <span class="text-2xl font-bold text-primary-600">${formatMoney(monthlySavings)}</span>
+       <div class="bg-blue-50/70 border border-blue-200 rounded-3xl p-6 shadow-sm mt-6">
+         <h4 class="text-[1.1rem] font-extrabold text-blue-900 mb-4 flex items-center gap-2"><span>💡</span> 부족분 보완 스마트 솔루션</h4>
+         <div class="space-y-4 text-[0.95rem] text-blue-900">
+           <p class="leading-relaxed">목표 세후 수령액 대비 현재 예상액이 <strong class="text-rose-600 text-lg">연 ${formatMoney(shortfall)} (월 약 ${formatMoney(monthlyShortfall)}) 부족</strong>합니다.</p>
+           
+           <div class="bg-white p-5 rounded-2xl shadow-sm">
+             <p class="mb-4 text-slate-700 leading-relaxed">은퇴 후 20년간 부족분을 충당하려면 은퇴 시점에 <strong>약 ${formatMoney(requiredLumpSum)}</strong>의 목돈이 필요합니다.</p>
+             <div class="flex justify-between items-center bg-blue-50 p-5 rounded-xl border border-blue-100">
+               <span class="font-bold text-slate-800 leading-snug">남은 ${years}년 동안<br><span class="text-brand-600">매월 필요한 추가 저축액</span></span>
+               <span class="text-2xl font-extrabold text-brand-600">${formatMoney(monthlySavings)}</span>
              </div>
-             <p class="text-[11px] text-slate-500 mt-3 leading-relaxed">
+             <p class="text-[0.75rem] text-slate-500 mt-4 leading-relaxed bg-slate-50 p-3 rounded-lg">
                ※ 예상 연수익률 ${yieldRate}% 가정.<br>
-               ※ 저축성 보험의 10년 비과세 혜택, 연금저축/IRP 세액공제 재투자, ISA 계좌 등을 적극 활용하시면 세금 손실을 줄여 매월 필요한 저축액을 훨씬 낮출 수 있습니다. 자세한 포트폴리오 상담은 우측 하단 연락처를 이용해주세요.
+               ※ 저축성 보험의 10년 비과세, 연금저축/IRP 세액공제, ISA 등을 활용하여 세금 손실을 줄이면 이 저축액을 훨씬 낮출 수 있습니다. 우측 하단의 담당자에게 문의해보세요!
              </p>
            </div>
          </div>
@@ -880,9 +848,9 @@ window.execCalcPensionTax = function() {
      `;
   } else {
      solutionHtml = `
-       <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 shadow-sm mt-5">
-         <h4 class="text-lg font-bold text-emerald-900 flex items-center gap-2"><span>🎉</span> 안정적인 은퇴 준비 완료!</h4>
-         <p class="text-emerald-800 mt-2 leading-relaxed">예상 세후 실수령액이 목표액을 <strong class="text-emerald-600 text-base">연 ${formatMoney(Math.abs(shortfall))}</strong> 초과 달성했습니다. 여유로운 은퇴 생활이 기대됩니다.</p>
+       <div class="bg-emerald-50/70 border border-emerald-200 rounded-3xl p-6 shadow-sm mt-6">
+         <h4 class="text-[1.1rem] font-extrabold text-emerald-900 flex items-center gap-2"><span>🎉</span> 안정적인 은퇴 준비 완료!</h4>
+         <p class="text-emerald-800 mt-3 leading-relaxed">예상 세후 실수령액이 목표액을 <strong class="text-emerald-600 text-[1.05rem]">연 ${formatMoney(Math.abs(shortfall))}</strong> 초과 달성했습니다. 여유로운 은퇴 생활이 기대됩니다.</p>
        </div>
      `;
   }
@@ -890,41 +858,40 @@ window.execCalcPensionTax = function() {
   const res = document.getElementById('calcResult');
   res.classList.remove('hidden');
   res.innerHTML = `
-    <div class="bg-purple-50 border border-purple-100 rounded-xl p-5">
-      <h3 class="text-lg font-bold text-purple-900 border-b border-purple-200 pb-2 mb-3">연금소득세 계산 결과</h3>
+    <div class="bg-purple-50/60 border border-purple-100 rounded-3xl p-6 shadow-sm">
+      <h3 class="text-lg font-extrabold text-purple-900 border-b-2 border-purple-200 pb-3 mb-5">연금소득세 계산 요약</h3>
       
-      <div class="space-y-3 mb-4">
-        <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
-          <div class="text-sm font-bold text-slate-700 mb-1">1. 비과세 연금</div>
-          <div class="flex justify-between text-sm"><span class="text-slate-500">수령액: ${formatMoney(taxFree)}</span> <span class="font-semibold text-emerald-600">세금: 0원</span></div>
+      <div class="space-y-3 mb-6">
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col gap-1">
+          <div class="text-[0.8rem] font-bold text-slate-500 uppercase tracking-wide">1. 비과세 연금</div>
+          <div class="flex justify-between items-center"><span class="font-medium text-slate-700">수령액: ${formatMoney(taxFree)}</span> <span class="font-extrabold text-emerald-600">세금: 0원</span></div>
         </div>
         
-        <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
-          <div class="text-sm font-bold text-slate-700 mb-1">2. 사적 연금 (세액공제분 등)</div>
-          <div class="flex justify-between text-sm mb-1"><span class="text-slate-500">수령액: ${formatMoney(priv)}</span> <span class="font-semibold text-slate-800">소득세: ${formatMoney(privTax)}</span></div>
-          <div class="text-xs text-slate-400 mt-1">👉 적용 방식: ${privRateStr}</div>
-          ${priv > 1500 ? '<div class="text-xs text-amber-500 mt-1">※ 사적연금 1,500만원 초과 시 종합과세와 비교하여 유리한 방식을 선택 가능합니다.</div>' : ''}
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col gap-1">
+          <div class="text-[0.8rem] font-bold text-slate-500 uppercase tracking-wide">2. 사적 연금</div>
+          <div class="flex justify-between items-center"><span class="font-medium text-slate-700">수령액: ${formatMoney(priv)}</span> <span class="font-extrabold text-slate-800">소득세: ${formatMoney(privTax)}</span></div>
+          <div class="text-[0.75rem] text-brand-500 font-medium mt-1">적용 방식: ${privRateStr}</div>
         </div>
 
-        <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
-          <div class="text-sm font-bold text-slate-700 mb-1">3. 공적 연금 (${pubType})</div>
-          <div class="flex justify-between text-sm mb-1"><span class="text-slate-500">수령액: ${formatMoney(pub)}</span> <span class="font-semibold text-slate-800">예상 소득세: ${formatMoney(pubTax)}</span></div>
-          <div class="text-xs text-slate-400 mt-1">👉 연금소득공제(-${formatMoney(pDed)}) 및 본인공제(-150만) 반영 과표: ${formatMoney(basePub)}</div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col gap-1">
+          <div class="text-[0.8rem] font-bold text-slate-500 uppercase tracking-wide">3. 공적 연금 (${pubType})</div>
+          <div class="flex justify-between items-center"><span class="font-medium text-slate-700">수령액: ${formatMoney(pub)}</span> <span class="font-extrabold text-slate-800">소득세: ${formatMoney(pubTax)}</span></div>
+          <div class="text-[0.75rem] text-brand-500 font-medium mt-1">공제 반영 후 과표: ${formatMoney(basePub)}</div>
         </div>
       </div>
       
-      <div class="bg-purple-100/50 rounded-lg p-4 flex flex-col gap-2 shadow-inner border border-purple-200">
-        <div class="flex justify-between items-center text-sm">
-          <span class="font-semibold text-slate-700">연간 총 연금 수령액</span>
-          <span class="font-bold text-slate-800 text-lg">${formatMoney(totalIncome)}</span>
+      <div class="bg-purple-100/50 rounded-2xl p-5 flex flex-col gap-3 border border-purple-200">
+        <div class="flex justify-between items-center text-[0.95rem]">
+          <span class="font-bold text-slate-700">연간 총 수령액</span>
+          <span class="font-extrabold text-slate-800 text-lg">${formatMoney(totalIncome)}</span>
         </div>
-        <div class="flex justify-between items-center border-t border-purple-200 pt-2 text-sm">
-          <span class="text-slate-600">총 연금소득세 <span class="text-xs">(지방세 포함)</span></span>
-          <span class="text-lg font-bold text-rose-500">- ${formatMoney(finalTax)}</span>
+        <div class="flex justify-between items-center border-t border-purple-200/60 pt-3">
+          <span class="font-bold text-slate-700">총 연금소득세 <span class="text-xs font-medium text-slate-500">(지방세 포함)</span></span>
+          <span class="text-lg font-extrabold text-rose-600">- ${formatMoney(finalTax)}</span>
         </div>
-        <div class="flex justify-between items-center border-t border-purple-200 pt-2 mt-1">
-          <span class="font-bold text-slate-800">예상 세후 실수령액</span>
-          <span class="text-2xl font-bold text-primary-600">${formatMoney(netIncome)}</span>
+        <div class="flex justify-between items-center border-t border-purple-200/60 pt-3 mt-1">
+          <span class="font-extrabold text-slate-900">예상 세후 실수령액</span>
+          <span class="text-2xl font-extrabold text-brand-600">${formatMoney(netIncome)}</span>
         </div>
       </div>
     </div>
@@ -933,7 +900,7 @@ window.execCalcPensionTax = function() {
   `;
 };
 
-// 초기화 실행
+// ── STREAMING_CHUNK:Final Initializations... ──
 renderCats();
 renderList();
 
